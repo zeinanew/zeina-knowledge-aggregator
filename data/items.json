@@ -1,6 +1,64 @@
 {
- "updated": "2026-10-11T09:23:25Z",
+ "updated": "2026-10-11T13:00:28Z",
  "items": [
+  {
+   "id": "ea95eacbd85b4f83",
+   "title": "Learning to use local AI is exciting, overwhelming, and frustrating",
+   "url": "https://www.theverge.com/ai-artificial-intelligence/1008484/learning-local-ai-hermes-qwen-model-mac-studio-testing-diary-progress",
+   "source": "verge-ai",
+   "sourceName": "The Verge AI",
+   "type": "news",
+   "date": "2026-10-11T11:00:00Z",
+   "addedAt": "2026-10-11T13:00:28Z",
+   "summary": "Powerful AI models such as Hermes and Qwen can now be run locally on devices like Mac Studio, enabling users to test them without sending data to the cloud.",
+   "why": "It lets users experiment with AI while keeping personal data private.",
+   "topic": "dev",
+   "tags": [
+    "local-ai",
+    "macstudio",
+    "qwen"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "local-ai-on-macstudio",
+   "rawStoryKey": "local-ai-on-macstudio",
+   "desc": "I'm embarking on a journey I've so far been hesitant to go on: actually using AI on the regular. Giving my most personal data to cloud services has been a major hold up for me, but it's increasingly possible to run powerful models locally to see what they're capable of. Is this tech so useful […]",
+   "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/100926_Asus_TUF_A14_Hermes_local_AI_ADiBenedetto_0001.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "af36e77eaf9ffb39",
+   "title": "Microsoft's Jacob Andreou on AI's product gap",
+   "url": "https://www.therundown.ai/articles/microsoft-s-jacob-andreou-on-ai-s-product-gap",
+   "source": "the-rundown-ai",
+   "sourceName": "The Rundown AI",
+   "type": "news",
+   "date": "2026-10-11T10:00:00Z",
+   "addedAt": "2026-10-11T13:00:28Z",
+   "summary": "Microsoft rebuilt Copilot with new capabilities to close an AI product gap.",
+   "why": "It shows how industry leaders iterate on AI tools to meet user needs.",
+   "topic": "dev",
+   "tags": [
+    "copilot",
+    "ai-product",
+    "microsoft"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "microsoft-copilot-product-gap",
+   "rawStoryKey": "microsoft-copilot-product-gap",
+   "desc": "How Microsoft rebuilt the new Copilot with capabilities to address a growing gap in AI",
+   "image": "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/46823a4f-9e10-4771-a88d-6a801d0741d2/microsoft-takeover-cover.png?t=1791545014",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
   {
    "id": "1896c9e6d13cbefe",
    "title": "Ollama v0.40.3 Release",
@@ -24,6 +82,40 @@
    "storyKey": "ollama-v0-40-3-release",
    "rawStoryKey": "ollama-v0-40-3-release",
    "desc": "What's Changed ollama launch claude no longer shows a warning about Claude connectors by @hoyyeva in #18878 ollama launch codex no longer warns about service tiers by @hoyyeva in #18879 Paused background model upgrade for embedding and other request performance, by @jmorganca in #18908 Full Changelog : v0.40.2...v0.40.3",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "821afa65ec965089",
+   "title": "Letting AI Agents Decompile a First-Person Shooter",
+   "url": "https://momo5502.com/posts/2026-10-09-game-decompilation/",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-11T02:02:38Z",
+   "addedAt": "2026-10-11T13:00:28Z",
+   "summary": "AI agents can decompile a first-person shooter game.",
+   "why": "It demonstrates AI’s ability to reverse‑engineer complex software.",
+   "topic": "agents",
+   "tags": [
+    "ai",
+    "agents",
+    "reverse-engineering"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "ai-agents-decompile-fps",
+   "rawStoryKey": "ai-agents-decompile-fps",
+   "desc": "Hacker News discussion with 111 points and 82 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50039092",
+   "hnId": "50039092",
+   "points": 111,
+   "comments": 82,
+   "image": "https://momo5502.com/posts/2026-10-09-game-decompilation/images/game.png",
+   "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
@@ -110,8 +202,8 @@
    "desc": "Hacker News discussion with 284 points and 66 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50037949",
    "hnId": "50037949",
-   "points": 293,
-   "comments": 68,
+   "points": 362,
+   "comments": 79,
    "engagementBonus": 1,
    "clusterSize": 1,
    "isPrimary": true,
@@ -204,7 +296,7 @@
    "rawStoryKey": "hermes-official-plugins",
    "desc": "☤ The official plugins for Hermes Agent, built and maintained by Nous Research: Home Assistant, Spotify, Claude Subscription DirectSDK and more, one install away from the Hermes plugin catalog. (Language: Python; 53 stars)",
    "repoFullName": "NousResearch/hermes-official-plugins",
-   "stars": 57,
+   "stars": 90,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -297,8 +389,8 @@
    "desc": "Hacker News discussion with 162 points and 105 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50035886",
    "hnId": "50035886",
-   "points": 162,
-   "comments": 105,
+   "points": 168,
+   "comments": 107,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -391,8 +483,8 @@
    "desc": "Hacker News discussion with 379 points and 272 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50033407",
    "hnId": "50033407",
-   "points": 379,
-   "comments": 272,
+   "points": 384,
+   "comments": 281,
    "image": "https://us1.discourse-cdn.com/flex001/uploads/bitwarden1/original/3X/7/f/7f03815c05cadc57a3915c4e7d01826f041b39ac.png",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -517,8 +609,8 @@
    "desc": "Hacker News discussion with 289 points and 133 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50031614",
    "hnId": "50031614",
-   "points": 292,
-   "comments": 133,
+   "points": 303,
+   "comments": 137,
    "engagementBonus": 1,
    "clusterSize": 1,
    "isPrimary": true,
@@ -667,7 +759,7 @@
    "desc": "Hacker News discussion with 208 points and 154 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50027118",
    "hnId": "50027118",
-   "points": 208,
+   "points": 210,
    "comments": 154,
    "image": "https://media.nbcphiladelphia.com/2022/01/CrimeTape-1.jpg?quality=85&strip=all&resize=1200%2C675",
    "engagementBonus": 1,
@@ -856,9 +948,7 @@
    "image": "https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6ac91132385fb9bbe1cb53b1_mda-reactions-blog-cover-navy-1200x675.png",
    "clusterSize": 2,
    "isPrimary": true,
-   "clusterSources": [
-    "LangChain Blog"
-   ],
+   "clusterSources": [],
    "buzzScore": 4
   },
   {
@@ -919,6 +1009,37 @@
    "clusterSources": [
     "The Verge AI"
    ],
+   "buzzScore": 3
+  },
+  {
+   "id": "e82cec6e8cb54cbc",
+   "title": "Awesome LLMOps Platforms",
+   "url": "https://github.com/talhaanwarch/awesome-llmops-platforms",
+   "source": "github-new-llm",
+   "sourceName": "GitHub: new LLM repos",
+   "type": "github",
+   "date": "2026-10-09T18:40:19Z",
+   "addedAt": "2026-10-11T13:00:28Z",
+   "summary": "A curated list of open‑source LLMOps tools, including tracing, evals, AI gateways, guardrails, and prompt management, sorted by stars and refreshed weekly.",
+   "why": "It gives developers a regularly updated resource to discover and compare LLMOps solutions.",
+   "topic": "dev",
+   "tags": [
+    "llmops",
+    "open-source",
+    "dev-tools"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "awesome-llmops-platforms-list",
+   "rawStoryKey": "awesome-llmops-platforms-list",
+   "desc": "Curated list of open-source LLMOps tools: tracing, evals, AI gateways, guardrails and prompt management. Sorted by stars, refreshed weekly. (Language: Python; 28 stars)",
+   "repoFullName": "talhaanwarch/awesome-llmops-platforms",
+   "stars": 28,
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
    "buzzScore": 3
   },
   {
@@ -1072,8 +1193,8 @@
    "desc": "Hacker News discussion with 437 points and 347 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50023450",
    "hnId": "50023450",
-   "points": 437,
-   "comments": 347,
+   "points": 439,
+   "comments": 348,
    "image": "https://framerusercontent.com/images/RtIGTDwO43jR4ZDilesXiR5znc.jpg",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -1457,9 +1578,7 @@
    "desc": "Release: ttok 1.0 I released ttok 0.4 , ran uv tool upgrade ttok , piped a file into the new version... and realized that it was defaulting to the GPT-4 tokenizer when it should very clearly default to GPT-5/GPT-6 instead! I figured switching the default was a reasonable excuse to finally ship a 1.0. OpenAI haven't actually confirmed that GPT-6 uses the same tokenizer as the GPT-5 family yet - there's an angry issue about it - but I found this commit by William Liu which reports on an experiment he ran confirming that the tokenizers are likely the same: All seven GPT models (5.5, 5.6 Sol/Terra/Luna, 6 Astra/Sol/Luna) report 44,794 tokens and match each other on every one of the 31 fixtures. GPT-6 introduces no input-count change on this corpus. Tags: projects , ai , openai , generative-ai , llms , tokenization",
    "clusterSize": 2,
    "isPrimary": true,
-   "clusterSources": [
-    "Simon Willison"
-   ],
+   "clusterSources": [],
    "buzzScore": 4
   },
   {
@@ -2268,7 +2387,6 @@
    "clusterSize": 7,
    "isPrimary": true,
    "clusterSources": [
-    "GitHub: Ollama releases",
     "GitHub: transformers releases"
    ],
    "buzzScore": 6
@@ -3831,9 +3949,7 @@
    "image": "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.2365-6/741906678_873652302465180_7764547737953411008_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e280be&_nc_ohc=Ag1jBdhsWOkQ7kNvwHzfho-&_nc_oc=AdqUXq83WXfppF5Q5tnGIutl0cmOXAi7enDfF327jNddxBSeeRB8B9Gd2ewo6LwlSwI&_nc_zt=14&_nc_ht=scontent-sjc6-1.xx&_nc_gid=01WK0u1LzDGCJqKW3L49Vw&_nc_ss=7b20f&oh=00_AQPlvt2QtupWhP9ELkVsBvP3wKrYkajYkWC_dJJ3GPeZUw&oe=6AE08DA6",
    "clusterSize": 2,
    "isPrimary": true,
-   "clusterSources": [
-    "Meta AI Blog"
-   ],
+   "clusterSources": [],
    "buzzScore": 4
   },
   {
@@ -8019,9 +8135,7 @@
    "storyKey": "v0310rc5addtransformersversionupperbound",
    "clusterSize": 2,
    "isPrimary": true,
-   "clusterSources": [
-    "GitHub: vLLM releases"
-   ],
+   "clusterSources": [],
    "buzzScore": 3
   },
   {
@@ -8298,9 +8412,7 @@
    "storyKey": "ollamav0351releaseaddsclefmodelsandenhan",
    "clusterSize": 6,
    "isPrimary": true,
-   "clusterSources": [
-    "GitHub: Ollama releases"
-   ],
+   "clusterSources": [],
    "buzzScore": 6
   },
   {
@@ -12170,9 +12282,7 @@
    "storyKey": "vllmproto040released",
    "clusterSize": 2,
    "isPrimary": true,
-   "clusterSources": [
-    "GitHub: vLLM releases"
-   ],
+   "clusterSources": [],
    "buzzScore": 4
   },
   {
