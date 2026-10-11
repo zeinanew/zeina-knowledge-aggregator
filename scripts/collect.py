@@ -45,6 +45,9 @@ GROQ_MODELS = [m.strip() for m in (os.getenv("GROQ_MODELS") or os.getenv("GROQ_M
 TOPICS = ["models", "agents", "dev", "research", "industry"]
 CLUSTER_WINDOW_DAYS = 4   # stories further apart than this are never clustered together
 CLUSTER_BUZZ_CAP = 3      # max bonus buzzScore gets from being covered by many sources
+OFFICIAL_TYPES = {"lab", "research", "github"}  # company blogs, papers, release pages - the
+                                                 # original source, as opposed to news/community/video
+                                                 # commentary about it
 CLUSTER_JACCARD = 0.5          # title-token overlap needed to cluster two different sources
 SAME_SOURCE_JACCARD = 0.2      # ...needed when both items are from the same source - a single-
                                 # repo release feed only ever posts about one project, so even a
@@ -58,10 +61,14 @@ EMBED_MODEL = "gemini-embedding-001"
 EMBED_DIM = 256          # truncated (Matryoshka) output - calibrated against the full 3072-dim
                           # vector and separates same-story/different-story pairs just as well,
                           # at a fraction of the size to cache and commit
-EMBED_SIMILARITY_THRESHOLD = 0.88  # calibrated on real items: same-story pairs (same event, two
-                          # outlets with very different wording) scored ~0.92-0.93; different
-                          # stories, even from the same company, scored ~0.81-0.84 - 0.88 sits
-                          # cleanly between the two with margin on both sides
+EMBED_SIMILARITY_THRESHOLD = 0.91  # re-calibrated on real production data after 0.88 produced
+                          # confirmed false merges (e.g. "Docker Agent" + "OpenTPU" at 0.887,
+                          # "Mistral Le Chonk" + "Reflection Beam" at 0.885 - different stories
+                          # that merely share an AI-news theme). True same-story pairs (same event,
+                          # different outlets' wording) observed at 0.905-0.942; confirmed false
+                          # positives observed up to 0.903 - 0.91 sits just above the false-positive
+                          # ceiling, and transitivity (A-B and B-C both clearing the bar) still
+                          # joins a cluster even if one borderline pair like A-C falls just under it
 EMBED_CACHE_FILE = DATA / "embeddings_cache.json"  # not used by the frontend - collect.py's own
                           # cross-run cache so new items can be compared against recent ones
                           # without re-embedding them every run
@@ -522,7 +529,8 @@ def refresh_engagement(items: list[dict]) -> None:
 
 
 # ---------------------------------------------------------------- clustering
-def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None = None) -> None:
+def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None = None,
+                   single_project_sources: set[str] | None = None) -> None:
     """Groups items covering the same underlying story (e.g. a model launch reported by
     five different outlets, or the same project's incremental releases from one source) so
     the frontend's Top Stories section can show it once instead of several times. Two items
@@ -530,7 +538,11 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
     - an exact story_key match,
     - Jaccard similarity on significant title words ≥ CLUSTER_JACCARD across different
       sources, or the much more lenient SAME_SOURCE_JACCARD when both are from the same
-      source (a single-repo release feed only ever posts about one project), or
+      *single-project* source (`single_project_sources` - a single-repo release feed only
+      ever posts about one project, so even weak title overlap is a strong signal; this must
+      NOT apply to aggregator/community sources like Hacker News, which cover many unrelated
+      topics a day and would otherwise false-merge unrelated stories that just share common
+      words), or
     - (when `embeddings` has a vector for both) cosine similarity ≥ EMBED_SIMILARITY_THRESHOLD -
       this is what catches two outlets covering the same event in very different words, which
       the title-overlap checks above miss on their own (see embed_text()'s docstring for a
@@ -545,6 +557,10 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
     view (Top Stories, category tabs, the Feed tab) once its original item ages out of range.
 
     Mutates each item in place with storyKey/clusterSize/clusterSources/isPrimary/buzzScore.
+    Also redirects the primary's own `url` to an official source (OFFICIAL_TYPES) elsewhere in
+    the cluster when the primary itself isn't one - title/summary stay the primary's, only the
+    click-through target changes, so a story never links to a news writeup when the company's
+    own announcement is right there in the same cluster.
 
     Even with the embedding check, this is approximate, not perfect dedup - an item with no
     cached embedding (API hiccup, or just not re-embedded yet) still only has the text-based
@@ -552,8 +568,15 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
     guaranteed general NLP solution.
     """
     embeddings = embeddings or {}
+    single_project_sources = single_project_sources or set()
     by_date = sorted(items, key=lambda it: parse_date(it.get("date")) or NOW)
-    keys = [it.get("storyKey") or slugify(title_key(it["title"])[:40]) for it in by_date]
+    # Each item's OWN identity for the exact-match check below must come from `rawStoryKey` (set
+    # once, at summarization time, never touched again) or a fresh per-item title slug - NOT from
+    # `storyKey`, which this function itself overwrites with the shared cluster key every run.
+    # Keying off storyKey would make any false merge permanent: once two items share a storyKey,
+    # every future run would see keys[i]==keys[j] and short-circuit straight past the Jaccard/
+    # embedding checks that might otherwise have un-merged them after a threshold/rule fix.
+    keys = [it.get("rawStoryKey") or slugify(title_key(it["title"])[:40]) for it in by_date]
     tokens = [title_tokens(it["title"]) for it in by_date]
     dates = [parse_date(it.get("date")) or NOW for it in by_date]
     window = dt.timedelta(days=CLUSTER_WINDOW_DAYS)
@@ -583,11 +606,25 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
             same_key = keys[i] and keys[i] == keys[j]
             if not same_key and tokens[i] and tokens[j]:
                 overlap = len(tokens[i] & tokens[j]) / len(tokens[i] | tokens[j])
-                threshold = SAME_SOURCE_JACCARD if by_date[i]["source"] == by_date[j]["source"] else CLUSTER_JACCARD
+                same_single_project_source = (by_date[i]["source"] == by_date[j]["source"]
+                                               and by_date[i]["source"] in single_project_sources)
+                threshold = SAME_SOURCE_JACCARD if same_single_project_source else CLUSTER_JACCARD
                 same_key = overlap >= threshold
-            if not same_key:
+            # arXiv titles are dense with shared subfield jargon ("world model", "agent",
+            # "training") - two genuinely different papers routinely share a term AND score
+            # >=EMBED_SIMILARITY_THRESHOLD on topic alone (confirmed in production data: 11
+            # distinct papers merged this way). A paper is also never "the same story reported
+            # in different words" the way news coverage is - each one IS the primary source -
+            # so there's little lost by requiring the normal Jaccard bar for them instead.
+            is_research_pair = by_date[i].get("type") == "research" or by_date[j].get("type") == "research"
+            if not same_key and not is_research_pair:
+                # Also require at least one shared significant title word - two items about the
+                # same broad theme ("an open-source AI dev tool") but different specific stories
+                # can otherwise score above EMBED_SIMILARITY_THRESHOLD on theme alone (confirmed
+                # in production data: "Docker Agent" and "OpenTPU" scored 0.887 with zero shared
+                # title words). This is a cheap, conservative guard, not a precise one.
                 va, vb = embeddings.get(by_date[i]["id"]), embeddings.get(by_date[j]["id"])
-                if va and vb:
+                if va and vb and tokens[i] & tokens[j]:
                     same_key = cosine(va, vb) >= EMBED_SIMILARITY_THRESHOLD
             if not same_key:
                 continue
@@ -608,6 +645,13 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
         primary = members[0]
         size = len(members)
         primary_sources = {by_date[i]["sourceName"] for i in members if i != primary}
+        # Prefer linking to the original source (company blog, paper, release page) over
+        # whichever outlet's writeup happened to win the importance/recency sort - title/summary
+        # still come from `primary` either way, only the click-through target changes.
+        if by_date[primary].get("type") not in OFFICIAL_TYPES:
+            official = next((i for i in members if by_date[i].get("type") in OFFICIAL_TYPES), None)
+            if official is not None:
+                by_date[primary]["url"] = by_date[official]["url"]
         for pos, i in enumerate(members):
             it = by_date[i]
             it["storyKey"] = keys[primary]
@@ -685,6 +729,7 @@ def main() -> None:
                 "summary": s.get("summary", ""), "why": s.get("why", ""),
                 "topic": s["topic"], "tags": s.get("tags", []), "importance": s.get("importance", 2),
                 "ai": s.get("ai", False), "provider": s.get("provider", ""), "storyKey": s.get("story_key", ""),
+                "rawStoryKey": s.get("story_key", ""),
                 "desc": (raw.get("desc") or "")[:1200],  # kept so a fallback item can be retried later
                 **({"discussion": raw["discussion"]} if raw.get("discussion") else {}),
                 **({"hnId": raw["hnId"], "points": raw.get("points"), "comments": raw.get("comments", 0)}
@@ -731,6 +776,7 @@ def main() -> None:
                 "tags": s.get("tags", it.get("tags", [])), "importance": s.get("importance", it.get("importance", 2)),
                 "ai": s.get("ai", False), "provider": s.get("provider", ""),
                 "storyKey": s.get("story_key", it.get("storyKey", "")),
+                "rawStoryKey": s.get("story_key", it.get("rawStoryKey", "")),
             })
             if client is not None:
                 vec = embed_text(client, f"{it['title']}. {it['summary']}")
@@ -763,7 +809,8 @@ def main() -> None:
         if backfilled:
             print(f"- Backfilled embeddings for {backfilled} pre-existing recent stories")
 
-    cluster_items(kept, embed_cache)
+    single_project_sources = {s["id"] for s in sources if s.get("kind") == "rss" and s.get("type") == "github"}
+    cluster_items(kept, embed_cache, single_project_sources)
     kept.sort(key=lambda it: it.get("date") or "", reverse=True)
     ITEMS_FILE.write_text(json.dumps({"updated": iso(NOW), "items": kept}, indent=1, ensure_ascii=False), encoding="utf-8")
     STATUS_FILE.write_text(json.dumps({"updated": iso(NOW), "sources": status}, indent=1, ensure_ascii=False), encoding="utf-8")
