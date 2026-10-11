@@ -644,7 +644,7 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
         members.sort(key=lambda i: (-by_date[i].get("importance", 2), -dates[i].timestamp()))
         primary = members[0]
         size = len(members)
-        primary_sources = {by_date[i]["sourceName"] for i in members if i != primary}
+        primary_sources = {by_date[i]["sourceName"] for i in members if i != primary} - {by_date[primary]["sourceName"]}
         # Prefer linking to the original source (company blog, paper, release page) over
         # whichever outlet's writeup happened to win the importance/recency sort - title/summary
         # still come from `primary` either way, only the click-through target changes.

@@ -457,10 +457,13 @@ function truncate(text,max){text=String(text??"");if(text.length<=max)return tex
   const cut=text.slice(0,max);const lastSpace=cut.lastIndexOf(" ");
   return (lastSpace>max*0.6?cut.slice(0,lastSpace):cut).trimEnd()+"…"}
 function buzzPills(it){
-  const others=(it.clusterSources||[]).length;
+  // clusterSources (from the backend) can include the primary's own sourceName when another
+  // cluster member happens to share it (e.g. two different gh-ollama releases in one cluster) -
+  // dedupe here so both the count and the tooltip reflect distinct sources, not raw member count.
+  const allSources=[...new Set([it.sourceName,...(it.clusterSources||[])])];
   const engaged=it.engagementBonus>0&&(it.points||it.stars);
   const engagePill=engaged?(it.points?`🔥 ${fmtNum(it.points)} pts on HN`:`⭐ ${fmtNum(it.stars)} stars`):"";
-  return `${others?`<span class="buzzpill">Covered by ${others+1} sources</span>`:""}${engagePill?`<span class="buzzpill">${esc(engagePill)}</span>`:""}`;
+  return `${allSources.length>1?`<span class="buzzpill" title="${esc(allSources.join(", "))}">Covered by ${allSources.length} sources</span>`:""}${engagePill?`<span class="buzzpill">${esc(engagePill)}</span>`:""}`;
 }
 
 /* ---------- Full-summary popover (the feed/search rows clamp to a line or two) ---------- */
@@ -562,10 +565,17 @@ document.body.addEventListener("click",e=>{
 });
 
 /* ---------- Top stories (the 2-minute-skim section: one card per story, ranked by buzz) ---------- */
+function rankScore(it){
+  // Mild recency decay so a multi-day-old high-buzz cluster fades instead of blocking fresher,
+  // lower-buzz stories for its entire stay in the window - without this a story's rank was a
+  // step function (full weight right up until it aged out of range, then gone).
+  const days=Math.max(0,(anchor()-new Date(it.date))/86400000);
+  return (it.buzzScore??it.importance??0)/Math.pow(days+1,0.7);
+}
 function topOfSet(items){
   let list=items.filter(it=>within(it,"3")&&it.isPrimary!==false);
   if(list.length<4)list=items.filter(it=>within(it,"7")&&it.isPrimary!==false);
-  return list.sort((a,b)=>(b.buzzScore??b.importance??0)-(a.buzzScore??a.importance??0));
+  return list.sort((a,b)=>rankScore(b)-rankScore(a));
 }
 // Picks the top n from a buzz-sorted list, allowing at most `cap` per source, so one prolific
 // source can't occupy every slot - backfills from the leftovers if there aren't enough distinct
