@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T08:42:20Z",
+ "updated": "2026-10-11T09:23:25Z",
  "items": [
   {
    "id": "1896c9e6d13cbefe",
@@ -110,8 +110,8 @@
    "desc": "Hacker News discussion with 284 points and 66 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50037949",
    "hnId": "50037949",
-   "points": 284,
-   "comments": 66,
+   "points": 293,
+   "comments": 68,
    "engagementBonus": 1,
    "clusterSize": 1,
    "isPrimary": true,
@@ -204,7 +204,7 @@
    "rawStoryKey": "hermes-official-plugins",
    "desc": "☤ The official plugins for Hermes Agent, built and maintained by Nous Research: Home Assistant, Spotify, Claude Subscription DirectSDK and more, one install away from the Hermes plugin catalog. (Language: Python; 53 stars)",
    "repoFullName": "NousResearch/hermes-official-plugins",
-   "stars": 54,
+   "stars": 57,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -517,7 +517,7 @@
    "desc": "Hacker News discussion with 289 points and 133 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50031614",
    "hnId": "50031614",
-   "points": 289,
+   "points": 292,
    "comments": 133,
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -1046,6 +1046,40 @@
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
+  },
+  {
+   "id": "04902b83f5b9f295",
+   "title": "Typesafe AI raises $870M at $7.5B",
+   "url": "https://typesafe.ai/blog/series-ai",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-09T17:02:31Z",
+   "addedAt": "2026-10-11T09:23:25Z",
+   "summary": "Typesafe AI raised $870 million in funding, valuing the company at $7.5 billion.",
+   "why": "Shows strong investor confidence in AI infrastructure.",
+   "topic": "industry",
+   "tags": [
+    "funding",
+    "valuation",
+    "ai"
+   ],
+   "importance": 4,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "typesafe-ai-870m-funding",
+   "rawStoryKey": "typesafe-ai-870m-funding",
+   "desc": "Hacker News discussion with 437 points and 347 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50023450",
+   "hnId": "50023450",
+   "points": 437,
+   "comments": 347,
+   "image": "https://framerusercontent.com/images/RtIGTDwO43jR4ZDilesXiR5znc.jpg",
+   "engagementBonus": 1,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 5
   },
   {
    "id": "e053ae3b334d9397",
@@ -2061,6 +2095,38 @@
    "buzzScore": 4
   },
   {
+   "id": "c506ab594822b91f",
+   "title": "ASD-STE100 Simplified Technical English Plugin for Coding Agents",
+   "url": "https://github.com/menonpg/ste-prompt",
+   "source": "github-new-llm",
+   "sourceName": "GitHub: new LLM repos",
+   "type": "github",
+   "date": "2026-10-08T10:04:43Z",
+   "addedAt": "2026-10-11T09:23:25Z",
+   "summary": "A new plugin implements ASD-STE100 Simplified Technical English for Claude Code, Codex, and coding agents to generate clearer, unambiguous LLM output.",
+   "why": "It applies standardized technical writing specifications to prompt engineering to reduce ambiguity in AI-assisted coding outputs.",
+   "topic": "dev",
+   "tags": [
+    "coding-agents",
+    "claude-code",
+    "developer-tools",
+    "prompt-engineering"
+   ],
+   "importance": 2,
+   "ai": true,
+   "provider": "gemini",
+   "storyKey": "ste-prompt-coding-agents",
+   "rawStoryKey": "ste-prompt-coding-agents",
+   "desc": "ASD-STE100 Simplified Technical English as a plugin for Claude Code, Codex & coding agents — clearer, unambiguous LLM output (Language: n/a; 28 stars)",
+   "repoFullName": "menonpg/ste-prompt",
+   "stars": 28,
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 2
+  },
+  {
    "id": "dcd9f5d91c1182c4",
    "title": "AI breakthroughs in robotics won’t change your life any time soon",
    "url": "https://www.technologyreview.com/2026/10/08/1145923/ai-breakthroughs-in-robotics-wont-change-your-life-any-time-soon/",
@@ -2353,12 +2419,10 @@
    "rawStoryKey": "anthropic-cyber-mission",
    "desc": "Oct 8, 2026 Announcements Introducing the Anthropic Cyber Mission",
    "image": "https://www-cdn.anthropic.com/images/4zrzovbb/website/d2af4f6715cbe9766a47430a24420cfca0a2c588-1200x630.jpg",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "Anthropic News"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "0f05fd4155a46f47",
@@ -2643,13 +2707,12 @@
    "storyKey": "chatgptsintelligentuiupdatefillsitsrespo",
    "desc": "OpenAI is launching a new Intelligent UI feature in ChatGPT that allows the chatbot to answer your questions with interactive visuals. The update, which is rolling out to all users alongside GPT-6, gives ChatGPT the ability to combine a text response with diagrams, charts, forms, tappable buttons, and more. In a blog post explaining the […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Intelligent-UI.png?quality=90&strip=all&crop=0%2C3.4613147178592%2C100%2C93.077370564282&w=1200",
-   "clusterSize": 3,
+   "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [
-    "OpenAI News",
     "TechCrunch AI"
    ],
-   "buzzScore": 7
+   "buzzScore": 6
   },
   {
    "id": "1b116c39a228fad1",
@@ -2912,10 +2975,10 @@
    "storyKey": "chatgptsintelligentuiupdatefillsitsrespo",
    "desc": "OpenAI is launching a new user interface that will bring interactive visuals to ChatGPT.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/Intelligent-UI.png?resize=1200,675",
-   "clusterSize": 3,
+   "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 4
   },
   {
    "id": "b88a33297d3d8a2a",
@@ -4111,13 +4174,13 @@
    "importance": 5,
    "ai": true,
    "provider": "groq",
-   "storyKey": "chatgptsintelligentuiupdatefillsitsrespo",
+   "storyKey": "gpt6andintelligentuiforeveryone",
    "desc": "GPT‑6 is rolling out globally in ChatGPT with Intelligent UI, delivering faster responses with visuals and interactive experiences you can explore and use directly.",
    "image": "https://images.ctfassets.net/kftzwdyauwt9/5frqtUAWccstAbVrCFraH6/5ae9b6bfbc3f3dff8001ed249812f97d/Intelligent-UI_Art-Card_16x9.png?w=1600&h=900&fit=fill",
-   "clusterSize": 3,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 7
+   "buzzScore": 5
   },
   {
    "id": "fd7b29632bdc8c65",
@@ -4306,11 +4369,11 @@
    "ai": true,
    "provider": "groq",
    "desc": "Like other solutions, it is not especially reliable, and it's easy to circumvent.",
-   "storyKey": "openaiwillstartwatermarkingchatgptstexti",
-   "clusterSize": 4,
-   "isPrimary": false,
+   "storyKey": "openaiwillwatermarkchatgptoutputsbydefau",
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "fef1d0f443914bd4",
@@ -5649,11 +5712,11 @@
    "ai": true,
    "provider": "groq",
    "desc": "Oct 6, 2026 Announcements Expanding the Cyber Verification Program",
-   "storyKey": "anthropic-cyber-mission",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "storyKey": "expandingthecyberverificationprogram",
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "cbee4f83437993a6",
@@ -5819,14 +5882,12 @@
    "provider": "gemini",
    "desc": "OpenAI will watermark ChatGPT and Codex text in the EU to comply with the AI Act. Editing can make the invisible marks harder to detect, it says.",
    "storyKey": "openaiwillstartwatermarkingchatgptstexti",
-   "clusterSize": 4,
+   "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [
-    "Ars Technica AI",
-    "OpenAI News",
     "The Verge AI"
    ],
-   "buzzScore": 7
+   "buzzScore": 5
   },
   {
    "id": "5bc9d1f4735012c9",
@@ -6071,10 +6132,10 @@
    "provider": "groq",
    "desc": "An invisible, machine-readable watermark in text output is rolling out to ChatGPT and Codex, but only for users in the European Union at first. OpenAI says its textGrain watermarking \"matched or exceeded\" other approaches like Google DeepMind's SynthID for text, which is also the basis for the watermarking Anthropic announced in August. Like OpenAI, Anthropic […]",
    "storyKey": "openaiwillstartwatermarkingchatgptstexti",
-   "clusterSize": 4,
+   "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "99e793ca69d95e70",
@@ -6621,11 +6682,11 @@
    "ai": true,
    "provider": "groq",
    "desc": "How OpenAI is approaching text watermarking under EU rules. Learn where watermarks apply, how detection works, and why access starts with researchers.",
-   "storyKey": "openaiwillstartwatermarkingchatgptstexti",
-   "clusterSize": 4,
-   "isPrimary": false,
+   "storyKey": "ourapproachtoeutextprovenancerules",
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "b48158e5ab87dd61",
