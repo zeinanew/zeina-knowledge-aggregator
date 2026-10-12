@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12T07:19:26Z",
+ "updated": "2026-10-12T07:36:40Z",
  "items": [
   {
    "id": "7d4e278f0b748445",
@@ -55,8 +55,8 @@
    "desc": "Hacker News discussion with 417 points and 582 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50047422",
    "hnId": "50047422",
-   "points": 417,
-   "comments": 584,
+   "points": 418,
+   "comments": 590,
    "image": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -89,7 +89,7 @@
    "rawStoryKey": "esp32-iphone-agent",
    "desc": "Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No developer account, no Xcode, no jailbreak. (Language: Python; 41 stars)",
    "repoFullName": "onehumanbeing/esp32-iphone-agent",
-   "stars": 41,
+   "stars": 44,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -242,6 +242,40 @@
    "buzzScore": 3
   },
   {
+   "id": "2ecde3f57bd91ef1",
+   "title": "Using AI for Just 10 Minutes Erodes Your Ability to Persist at Hard Things",
+   "url": "https://vcresearch.berkeley.edu/news/using-ai-just-10-minutes-erodes-your-ability-persist-hard-things",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-11T10:47:21Z",
+   "addedAt": "2026-10-12T07:36:40Z",
+   "summary": "UC Berkeley research suggests that using AI for as little as 10 minutes reduces a person's ability to persist when tackling challenging tasks.",
+   "why": "It raises questions about the cognitive and behavioral impacts of delegating problem-solving to AI tools in daily workflows.",
+   "topic": "research",
+   "tags": [
+    "ai",
+    "cognition",
+    "productivity",
+    "research"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "gemini",
+   "storyKey": "berkeley-ai-persistence-study",
+   "rawStoryKey": "berkeley-ai-persistence-study",
+   "desc": "Hacker News discussion with 101 points and 98 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50041765",
+   "hnId": "50041765",
+   "points": 101,
+   "comments": 98,
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
    "id": "af36e77eaf9ffb39",
    "title": "Microsoft's Jacob Andreou on AI's product gap",
    "url": "https://www.therundown.ai/articles/microsoft-s-jacob-andreou-on-ai-s-product-gap",
@@ -323,8 +357,8 @@
    "desc": "Hacker News discussion with 111 points and 82 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50039092",
    "hnId": "50039092",
-   "points": 192,
-   "comments": 137,
+   "points": 193,
+   "comments": 138,
    "image": "https://momo5502.com/posts/2026-10-09-game-decompilation/images/game.png",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -821,7 +855,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50031614",
    "hnId": "50031614",
    "points": 323,
-   "comments": 151,
+   "comments": 152,
    "engagementBonus": 1,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1189,10 +1223,10 @@
    "rawStoryKey": "langchain-managed-deep-agents-reactions-api",
    "desc": "Managed Deep Agents includes a new API for managing reactions for your distributed agents, and a system to dynamically assign emoji responses with your instrument of choice. Learn more.",
    "image": "https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6ac91132385fb9bbe1cb53b1_mda-reactions-blog-cover-navy-1200x675.png",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "d07dddd55da28704",
@@ -2718,6 +2752,35 @@
    "buzzScore": 2
   },
   {
+   "id": "6b3eb2e65b9806fa",
+   "title": "Gears of War: E-Day Launches on GeForce NOW",
+   "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-gears-of-war-e-day/",
+   "source": "nvidia-blog",
+   "sourceName": "NVIDIA Blog",
+   "type": "lab",
+   "date": "2026-10-08T13:00:46Z",
+   "addedAt": "2026-10-12T07:36:40Z",
+   "summary": "Gears of War: E-Day launches on GeForce NOW with GeForce RTX‑powered performance.",
+   "why": "It expands cloud gaming availability.",
+   "topic": "industry",
+   "tags": [
+    "cloudgaming",
+    "geforce-now",
+    "gears-of-war"
+   ],
+   "importance": 2,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "gears-of-war-e-day-launch-geforce-now",
+   "rawStoryKey": "gears-of-war-e-day-launch-geforce-now",
+   "desc": "Gears of War: E-Day leads the charge on GeForce NOW this week, bringing Marcus Fenix and Dom Santiago’s first fight against the Locust Horde to the cloud with GeForce RTX-powered performance. A new way to join the action is also coming: Fire TV users will soon be able to purchase GeForce NOW memberships directly through […]",
+   "image": "https://blogs.nvidia.com/wp-content/uploads/2026/10/gfn-thursday-10-8-blog-1920x1080-logo-842x450.jpg",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 2
+  },
+  {
    "id": "ca1ec6c6a1a1314d",
    "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
    "url": "https://openai.com/index/pollo-ai",
@@ -3006,14 +3069,10 @@
    "storyKey": "microsofteventdebutsnewaifriendlyhardwar",
    "desc": "Get ready for more AI in your Windows and more AI on the desktop.",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/10/Surface-Laptop-Ultra-Opened-500x500.png",
-   "clusterSize": 4,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "NVIDIA Blog",
-    "TechCrunch AI",
-    "The Verge AI"
-   ],
-   "buzzScore": 7
+   "clusterSources": [],
+   "buzzScore": 4
   },
   {
    "id": "077dea1e8a7adb2e",
@@ -3386,13 +3445,13 @@
    "importance": 4,
    "ai": true,
    "provider": "groq",
-   "storyKey": "microsofteventdebutsnewaifriendlyhardwar",
+   "storyKey": "microsoftreleasesnewnvidiachipaipcswithr",
    "desc": "Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/Microsoft-Surface-Laptop-Ultra.png?resize=1200,677",
-   "clusterSize": 4,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 7
+   "buzzScore": 4
   },
   {
    "id": "876648c3358ff5ff",
@@ -3417,12 +3476,10 @@
    "storyKey": "chatgptsintelligentuiupdatefillsitsrespo",
    "desc": "OpenAI is launching a new Intelligent UI feature in ChatGPT that allows the chatbot to answer your questions with interactive visuals. The update, which is rolling out to all users alongside GPT-6, gives ChatGPT the ability to combine a text response with diagrams, charts, forms, tappable buttons, and more. In a blog post explaining the […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Intelligent-UI.png?quality=90&strip=all&crop=0%2C3.4613147178592%2C100%2C93.077370564282&w=1200",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "TechCrunch AI"
-   ],
-   "buzzScore": 6
+   "clusterSources": [],
+   "buzzScore": 5
   },
   {
    "id": "1b116c39a228fad1",
@@ -3508,13 +3565,13 @@
    "importance": 4,
    "ai": true,
    "provider": "groq",
-   "storyKey": "microsofteventdebutsnewaifriendlyhardwar",
+   "storyKey": "nvidiamicrosoftkickoffanewbeginningforwi",
    "desc": "At a Microsoft event in San Francisco on Wednesday, NVIDIA founder and CEO Jensen Huang and Microsoft CEO Satya Nadella outlined how NVIDIA and Microsoft are co-engineering hardware and software for AI agents to run on Windows PCs. NVIDIA was founded because of Windows, Huang said. Now AI agents are coming to Windows. “If you […]",
    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/10/nvidia-rtx-spark-microsoft-event-3840x2160-1-842x450.png",
-   "clusterSize": 4,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 7
+   "buzzScore": 4
   },
   {
    "id": "a5b44d5e4c84e5df",
@@ -3536,13 +3593,13 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "microsofteventdebutsnewaifriendlyhardwar",
+   "storyKey": "everythingannouncedatmicrosoftssurfacela",
    "desc": "Microsoft just wrapped up a big Windows and Surface-focused keynote in San Francisco. The biggest announcement was arguably the release details about the Surface Laptop Ultra, its new laptop that’s powered by Nvidia’s RTX Spark Arm-based chip. The machine will start at $2,599 for a configuration with an 8-core CPU, 24GB of RAM, and 512GB […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/lc-img-639ce71c-4af9-43a1-b5a1-34b6d8db35cc.jpeg?quality=90&strip=all&crop=0%2C10.745251402131%2C100%2C78.509497195739&w=1200",
-   "clusterSize": 4,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "36bf85cb54324cff",
@@ -3568,12 +3625,10 @@
    "storyKey": "metasmuselaunchesonipadjustamonthafterit",
    "desc": "Meta’s AI agent Muse is now available on iPad, just a month after its mobile debut, as the company rapidly expands the assistant’s reach and integrations.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/09/meta-muse-app-GettyImages-2293792137.jpg?w=1024",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "The Verge AI"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "610b12eb506990c2",
@@ -3625,13 +3680,13 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "langchain-managed-deep-agents-reactions-api",
+   "storyKey": "whatsnewinmanageddeepagentsschedulesperr",
    "desc": "LangChain just released new capabilities in Managed Deep Agents. Agents can now schedule follow-ups, reconfigure themselves on every run, and react to Slack messages.",
    "image": "https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6ac6882bdbe9afeb231b8b05_Introducing%20Managed%20Deep%20Agents%20v0.9.png",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "9c7dd462aa5ae2f1",
@@ -3682,13 +3737,13 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "chatgptsintelligentuiupdatefillsitsrespo",
+   "storyKey": "chatgptisgettingalotmorevisualwiththelau",
    "desc": "OpenAI is launching a new user interface that will bring interactive visuals to ChatGPT.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/Intelligent-UI.png?resize=1200,675",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "b88a33297d3d8a2a",
@@ -4219,13 +4274,13 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "metasmuselaunchesonipadjustamonthafterit",
+   "storyKey": "muselaunchesontheipad",
    "desc": "After launching nearly a month ago and spending several weeks as the top free app in Apple's App Store, the latest update to Meta's Muse iOS app introduces native support for the iPad. A Mac version of Meta's agentic AI tool (designed to compete with OpenClaw, ChatGPT's Dots, and Grok Bot) was released about a […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/musetop.jpg?quality=90&strip=all&crop=0,10.771144658312,100,78.457710683376",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "e8947d3adf72c0ca",
