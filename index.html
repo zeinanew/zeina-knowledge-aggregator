@@ -247,7 +247,7 @@ aside.filters{position:sticky;top:16px;display:grid;gap:22px;padding:18px}
 /* Summary popover */
 .sumpop{position:fixed;z-index:60;width:300px;max-width:calc(100vw - 32px);padding:14px 36px 14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 26px var(--shadow);font-size:12.5px;line-height:1.5;color:var(--ink-2)}
 .sumpop p{margin:0}
-.sumpop .why{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px}
+.sumpop .why,.sumpop .sources{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px}
 .sumpop-close{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;border:0;color:var(--ink-2);padding:0}
 .sumpop-close:hover{background:var(--line)}
 
@@ -424,6 +424,7 @@ aside.filters{position:sticky;top:16px;display:grid;gap:22px;padding:18px}
   </button>
   <p id="sumpop-sum"></p>
   <p class="why" id="sumpop-why" hidden></p>
+  <p class="sources" id="sumpop-sources" hidden></p>
 </div>
 
 <script>
@@ -456,14 +457,16 @@ function fmtNum(n){return n>=1000?(n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,
 function truncate(text,max){text=String(text??"");if(text.length<=max)return text;
   const cut=text.slice(0,max);const lastSpace=cut.lastIndexOf(" ");
   return (lastSpace>max*0.6?cut.slice(0,lastSpace):cut).trimEnd()+"…"}
+// clusterSources (from the backend) can include the primary's own sourceName when another
+// cluster member happens to share it (e.g. two different gh-ollama releases in one cluster) -
+// dedupe here so both the pill count and the popover list reflect distinct sources, not raw
+// member count.
+function clusterSourceNames(it){return [...new Set([it.sourceName,...(it.clusterSources||[])])]}
 function buzzPills(it){
-  // clusterSources (from the backend) can include the primary's own sourceName when another
-  // cluster member happens to share it (e.g. two different gh-ollama releases in one cluster) -
-  // dedupe here so both the count and the tooltip reflect distinct sources, not raw member count.
-  const allSources=[...new Set([it.sourceName,...(it.clusterSources||[])])];
+  const allSources=clusterSourceNames(it);
   const engaged=it.engagementBonus>0&&(it.points||it.stars);
   const engagePill=engaged?(it.points?`🔥 ${fmtNum(it.points)} pts on HN`:`⭐ ${fmtNum(it.stars)} stars`):"";
-  return `${allSources.length>1?`<span class="buzzpill" title="${esc(allSources.join(", "))}">Covered by ${allSources.length} sources</span>`:""}${engagePill?`<span class="buzzpill">${esc(engagePill)}</span>`:""}`;
+  return `${allSources.length>1?`<button type="button" class="buzzpill moretoggle" data-id="${esc(it.id)}" aria-haspopup="dialog" aria-expanded="false">Covered by ${allSources.length} sources</button>`:""}${engagePill?`<span class="buzzpill">${esc(engagePill)}</span>`:""}`;
 }
 
 /* ---------- Full-summary popover (the feed/search rows clamp to a line or two) ---------- */
@@ -477,6 +480,9 @@ function openSumPop(btn){
   $("sumpop-sum").textContent=it.summary||"";
   $("sumpop-why").hidden=!it.why;
   $("sumpop-why").textContent=it.why?"Why it matters: "+it.why:"";
+  const names=clusterSourceNames(it);
+  $("sumpop-sources").hidden=names.length<2;
+  $("sumpop-sources").textContent=names.length<2?"":"Sources: "+names.join(", ");
   const pop=$("sumpop");pop.hidden=false;btn.setAttribute("aria-expanded","true");
   const r=btn.getBoundingClientRect();const pw=pop.offsetWidth;
   pop.style.left=Math.min(Math.max(8,r.left),innerWidth-pw-8)+"px";
