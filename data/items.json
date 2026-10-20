@@ -1,6 +1,307 @@
 {
- "updated": "2026-10-20T05:25:07Z",
+ "updated": "2026-10-20T13:02:55Z",
  "items": [
+  {
+   "id": "67231f93b3ef5384",
+   "title": "How I built my everything app",
+   "url": "https://www.bensbites.com/p/how-i-built-my-everything-app",
+   "source": "bens-bites",
+   "sourceName": "Ben's Bites",
+   "type": "news",
+   "date": "2026-10-20T13:02:28Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "The author built an app that uses AI to customize home devices such as TVs.",
+   "why": "It demonstrates how AI can be integrated into home automation workflows.",
+   "topic": "dev",
+   "tags": [
+    "ai",
+    "home-automation",
+    "dev-tools"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "everything-app-ai-home-automation",
+   "rawStoryKey": "everything-app-ai-home-automation",
+   "desc": "AI can customise your home devices, like your TV",
+   "image": "https://substackcdn.com/image/fetch/$s_!5UI1!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F312e8c5c-e1bf-4874-94a6-eec18f9f3b77_1920x1080.png",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "15705003f60bff47",
+   "title": "Eka is worth $1.45B thanks to a physical AI model that has experts raving",
+   "url": "https://techcrunch.com/2026/10/20/eka-is-worth-1-45-billion-thanks-to-a-physical-ai-model-that-has-experts-raving/",
+   "source": "techcrunch-ai",
+   "sourceName": "TechCrunch AI",
+   "type": "news",
+   "date": "2026-10-20T13:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Eka Robotics is valued at $1.45B thanks to its physical AI robotic arm that picks a wide range of objects smoothly and human-like.",
+   "why": "It demonstrates a breakthrough in physical AI robotics, showing that robotic arms can achieve human-like dexterity.",
+   "topic": "industry",
+   "tags": [
+    "robotics",
+    "ai",
+    "funding"
+   ],
+   "importance": 4,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "eka-robotics-valuation-1-45b",
+   "rawStoryKey": "eka-robotics-valuation-1-45b",
+   "desc": "Eka Robotics may be the first robotic arm that is actually good at picking a wide range of objects up, and it is so smooth and human-like, it is wowing the industry.",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/10/Screenshot-2026-10-19-at-1.21.23-PM.png?resize=1200,974",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 4
+  },
+  {
+   "id": "add383da2fc04409",
+   "title": "Meta Muse exposes users' personal and business secrets when they share conversations",
+   "url": "https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/",
+   "source": "ars-ai",
+   "sourceName": "Ars Technica AI",
+   "type": "news",
+   "date": "2026-10-20T12:33:13Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Meta Muse lets anyone retrieve thousands of private conversations with a single query.",
+   "why": "It exposes a privacy flaw that could leak sensitive data.",
+   "topic": "industry",
+   "tags": [
+    "privacy",
+    "ai",
+    "meta"
+   ],
+   "importance": 4,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "meta-muse-privacy-issue",
+   "rawStoryKey": "meta-muse-privacy-issue",
+   "desc": "A single query is all that's required to find thousands of conversations listed by title.",
+   "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/10/ai-robot-hand-caution-500x500.jpg",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 4
+  },
+  {
+   "id": "0a18db4caf216ec0",
+   "title": "AI adoption by industry shows what other sectors can learn",
+   "url": "https://www.technologyreview.com/2026/10/20/1145423/ai-adoption-by-industry-shows-what-other-sectors-can-learn/",
+   "source": "mit-tr-ai",
+   "sourceName": "MIT Technology Review",
+   "type": "news",
+   "date": "2026-10-20T12:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Generative AI and automation tools are reshaping software engineering and product management, signaling similar shifts in other industries.",
+   "why": "It indicates AI adoption is spreading beyond tech, affecting other sectors.",
+   "topic": "industry",
+   "tags": [
+    "ai",
+    "automation",
+    "industry",
+    "adoption"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "ai-adoption-by-industry",
+   "rawStoryKey": "ai-adoption-by-industry",
+   "desc": "The current narrative around artificial intelligence in the workplace is largely driven by Silicon Valley. But treating the tech sector as an island misses the actual trends in technology adoption–tech is just the first industry in line. As generative AI and automation tools mature, the shifts currently reshaping software engineering and product management will inevitably…",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?resize=1200,600",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "b0930e389e924a60",
+   "title": "Yelp can now call on your behalf to check wait times at a restaurant",
+   "url": "https://techcrunch.com/2026/10/20/yelp-can-now-call-on-your-behalf-to-check-wait-times-at-a-restaurant/",
+   "source": "techcrunch-ai",
+   "sourceName": "TechCrunch AI",
+   "type": "news",
+   "date": "2026-10-20T11:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Yelp has added an AI feature that can call restaurants to check wait times on your behalf.",
+   "why": "It shows how conversational AI can automate routine phone calls to improve user convenience.",
+   "topic": "agents",
+   "tags": [
+    "yelp",
+    "ai",
+    "agents",
+    "wait-times"
+   ],
+   "importance": 2,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "yelp-ai-wait-time-calling",
+   "rawStoryKey": "yelp-ai-wait-time-calling",
+   "desc": "Yelp is embedding numerous new AI features into its app that can do everything from call to check on restaurant wait times to create personalized recommendations that remember your preferences.",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/10/Yelp-waitlist.jpg?resize=1200,675",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 2
+  },
+  {
+   "id": "82497db5b87aeee6",
+   "title": "Otter.ai raises $320 million from General Catalyst’s growth fund for its meeting tool",
+   "url": "https://techcrunch.com/2026/10/20/otter-ai-raises-320-million-from-general-catalysts-growth-fund-for-its-meeting-tool/",
+   "source": "techcrunch-ai",
+   "sourceName": "TechCrunch AI",
+   "type": "news",
+   "date": "2026-10-20T11:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Otter.ai raised $320 million from General Catalyst’s Customer Value Fund.",
+   "why": "It supports the expansion and innovation of AI-powered meeting tools.",
+   "topic": "industry",
+   "tags": [
+    "ai",
+    "funding",
+    "meeting"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "otter-ai-raises-320m-general-catalyst",
+   "rawStoryKey": "otter-ai-raises-320m-general-catalyst",
+   "desc": "Meeting note-taking tool Otter.ai announced on Tuesday that it has raised $320 million from General Catalyst’s Customer Value Fund (CVF), which provides capital to startups without diluting equity and gets returns on the results of marketing spend. Otter.ai said that it will use these funds for enterprise growth, go-to-market strategy, international expansion, and product innovation. […]",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/04/Otter-feat.jpg?resize=1200,675",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "79e072c528493212",
+   "title": "DeepSeek just open-sourced its inference engine",
+   "url": "https://github.com/deepseek-ai/DeepInfer",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-20T09:08:54Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "DeepSeek has open-sourced its inference engine.",
+   "why": "It gives developers a new, free tool to run large language models locally.",
+   "topic": "dev",
+   "tags": [
+    "open-source",
+    "inference",
+    "deepseek"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "deepseek-inference-engine-open-source",
+   "rawStoryKey": "deepseek-inference-engine-open-source",
+   "desc": "Hacker News discussion with 858 points and 294 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50163277",
+   "hnId": "50163277",
+   "points": 859,
+   "comments": 294,
+   "engagementBonus": 2,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 5
+  },
+  {
+   "id": "56702cb0c64f6365",
+   "title": "Samsung’s massive new semiconductor hub",
+   "url": "https://www.technologyreview.com/2026/10/20/1145916/dispatch-visit-to-samsung-massive-new-semiconductor-hub/",
+   "source": "mit-tr-ai",
+   "sourceName": "MIT Technology Review",
+   "type": "news",
+   "date": "2026-10-20T09:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Samsung is building a massive semiconductor complex in Pyeongtaek, South Korea, with three 24/7 fabs and a fourth coming online to supply memory chips for GPUs used in generative AI.",
+   "why": "It expands the supply of memory chips critical for training and running generative AI models.",
+   "topic": "industry",
+   "tags": [
+    "semiconductor",
+    "memory",
+    "ai-hardware",
+    "samsung"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "samsung-new-semiconductor-hub",
+   "rawStoryKey": "samsung-new-semiconductor-hub",
+   "desc": "Generative AI models run on powerful chips known as GPUs, which depend on stacks of specialized memory chips packaged with the processor. To meet growing demand for memory, Samsung is building a massive new semiconductor manufacturing complex in Pyeongtaek, South Korea. Three fabs already operate around the clock, and a fourth is coming online. Construction…",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/10/GettyImages-2277893810.jpg?resize=1200,600",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "4a0641537b496ebc",
+   "title": "Anthropic co-founder says the singularity is underway",
+   "url": "https://www.therundown.ai/articles/anthropic-co-founder-says-the-singularity-is-underway",
+   "source": "the-rundown-ai",
+   "sourceName": "The Rundown AI",
+   "type": "news",
+   "date": "2026-10-20T09:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Anthropic co‑founder says the singularity is underway.",
+   "why": "It signals a rapid shift toward transformative AI capabilities.",
+   "topic": "industry",
+   "tags": [
+    "anthropic",
+    "singularity",
+    "ai"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "anthropic-singularity-claim",
+   "rawStoryKey": "anthropic-singularity-claim",
+   "desc": "PLUS: Try ChatGPT’s new voices with GPT-Live-1.1",
+   "image": "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/56fb8c5c-27b4-4968-a22e-e23ed79158e3/singularity.png?t=1792443788",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "dcac1de9629f2697",
+   "title": "Kahoot Tools: Utility Collection for Enhancing Kahoot Experience",
+   "url": "https://github.com/VolcanoDomainTriumph/kahoot-tools-ai-resocket-answer-tool",
+   "source": "github-new-llm",
+   "sourceName": "GitHub: new LLM repos",
+   "type": "github",
+   "date": "2026-10-20T05:20:18Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Kahoot Tools is a collection of utilities that enhance Kahoot, simplify game management, and provide tools for quizzes, learning, and interactive activities.",
+   "why": "It offers developers and educators a streamlined way to manage Kahoot sessions and create interactive learning experiences.",
+   "topic": "dev",
+   "tags": [
+    "kahoot",
+    "utilities",
+    "open-source",
+    "education"
+   ],
+   "importance": 2,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "kahoot-tools-utility-collection",
+   "rawStoryKey": "kahoot-tools-utility-collection",
+   "desc": "Kahoot Tools is a collection of useful utilities designed to enhance the Kahoot experience, simplify game management, and provide convenient tools for quizzes, learning, and interactive activities. (Language: HTML; 34 stars)",
+   "repoFullName": "VolcanoDomainTriumph/kahoot-tools-ai-resocket-answer-tool",
+   "stars": 34,
+   "image": "https://repository-images.githubusercontent.com/1426536671/ec7f269f-f923-4b0a-b432-2d43524f9306",
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 2
+  },
   {
    "id": "da019040563955b2",
    "title": "Spain-based startups advance regional innovation with Barcelona Supercomputing Center",
@@ -56,6 +357,65 @@
    "rawStoryKey": "mamdani-feds-abdicated-on-ai",
    "desc": "Mayor Zohran Mamdani said Monday night that New Yorkers must resist the narrative that an AI takeover is inevitable and demand regulations that protect the public and put power back in their hands.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/IMG_1933.jpg?resize=1200,900",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "2596ff929aeef557",
+   "title": "AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms",
+   "url": "https://huggingface.co/blog/anylanguagemodel-1-0",
+   "source": "huggingface",
+   "sourceName": "Hugging Face Blog",
+   "type": "lab",
+   "date": "2026-10-20T00:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "AnyLanguageModel 1.0 celebrates one year of local models on Apple platforms.",
+   "why": "It demonstrates that local AI inference is now mature on Apple devices, improving privacy and offline usability.",
+   "topic": "models",
+   "tags": [
+    "local-ai",
+    "apple",
+    "huggingface"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "anylanguagemodel-1-0",
+   "rawStoryKey": "anylanguagemodel-1-0",
+   "desc": "",
+   "image": "https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "3eb18e5ff7f2a0ef",
+   "title": "MPS in PyTorch 2.15",
+   "url": "https://huggingface.co/blog/mps-pytorch-2-15",
+   "source": "huggingface",
+   "sourceName": "Hugging Face Blog",
+   "type": "lab",
+   "date": "2026-10-20T00:00:00Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "PyTorch 2.15 adds support for the Metal Performance Shaders (MPS) backend, enabling GPU acceleration on Apple Silicon.",
+   "why": "It lets developers run PyTorch models efficiently on Macs.",
+   "topic": "dev",
+   "tags": [
+    "mps",
+    "pytorch",
+    "apple silicon",
+    "gpu"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "pytorch-2-15-mps-support",
+   "rawStoryKey": "pytorch-2-15-mps-support",
+   "desc": "",
+   "image": "https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png",
    "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
@@ -121,6 +481,38 @@
    "buzzScore": 5
   },
   {
+   "id": "0e963d63370882c9",
+   "title": "Fine-tune Qwen2.5-Coder-7B for free (QLoRA on Kaggle T4) and run a local coding agent that runs your code instead of guessing",
+   "url": "https://github.com/pnnnx/local-code-tutor",
+   "source": "github-new-llm",
+   "sourceName": "GitHub: new LLM repos",
+   "type": "github",
+   "date": "2026-10-19T23:37:57Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Fine-tune Qwen2.5-Coder-7B for free with QLoRA on Kaggle T4 and run a local coding agent that executes your code.",
+   "why": "It enables developers to run a powerful coding agent locally without cloud costs.",
+   "topic": "agents",
+   "tags": [
+    "qwen",
+    "qlora",
+    "local-agent",
+    "coding"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "fine-tune-qwen2-5-coder-7b-qlora-kaggle-t4",
+   "rawStoryKey": "fine-tune-qwen2-5-coder-7b-qlora-kaggle-t4",
+   "desc": "Fine-tune Qwen2.5-Coder-7B for free (QLoRA on Kaggle T4) and run a local coding agent that runs your code instead of guessing — 8 GB Mac, llama.cpp, LoRA weight analysis with charts (Language: Python; 23 stars)",
+   "repoFullName": "pnnnx/local-code-tutor",
+   "stars": 23,
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
    "id": "efa8c4c666c628dd",
    "title": "WhatsApp's help pages hid LLM instructions: don't recommend a regulator",
    "url": "https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions",
@@ -146,14 +538,48 @@
    "desc": "Hacker News discussion with 201 points and 34 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50159341",
    "hnId": "50159341",
-   "points": 202,
-   "comments": 34,
+   "points": 566,
+   "comments": 159,
    "image": "https://redact.dev/blog-images/2026/10/whatsapp-hidden-ai-notes-robot-puppeteer.jpg",
-   "engagementBonus": 1,
+   "engagementBonus": 2,
    "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 5
+  },
+  {
+   "id": "055912be3d369fe6",
+   "title": "How abliterated models can get you pwned",
+   "url": "https://projectdiscovery.io/research/how-abliterated-models-can-get-you-pwned",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-19T23:08:52Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Abliterated models can expose vulnerabilities that allow attackers to compromise systems.",
+   "why": "It shows that model modifications can create new attack vectors.",
+   "topic": "research",
+   "tags": [
+    "ai-security",
+    "model-abliteration",
+    "vulnerability"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "abliterated-models-security",
+   "rawStoryKey": "abliterated-models-security",
+   "desc": "Hacker News discussion with 177 points and 99 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50159245",
+   "hnId": "50159245",
+   "points": 179,
+   "comments": 99,
+   "image": "https://projectdiscovery.io/images/ProjectDiscovery_share.png",
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "2eba6fdc38ff53cf",
@@ -816,7 +1242,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "f30a44480c497b17",
@@ -843,8 +1269,8 @@
    "desc": "Hacker News discussion with 234 points and 85 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50155245",
    "hnId": "50155245",
-   "points": 234,
-   "comments": 85,
+   "points": 250,
+   "comments": 89,
    "image": "https://framerusercontent.com/images/Zgp1I1AaILVgkXF4Xlk7iImaE.png?width=1200&height=630",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -936,6 +1362,40 @@
    "rawStoryKey": "nvidia-ebu-sovereign-framework-partnership",
    "desc": "At a creative industry event that took place today in Berlin — hosted in collaboration with Adobe, Bertelsmann, NVIDIA and UFA — the latest advancements in intelligent media were on display. Key to the news: the European Broadcasting Union (EBU) is collaborating with NVIDIA to expand its sovereign framework with cloud, open models and integration […]",
    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/10/media-and-entertainment-1920x1080-1-842x450.jpg",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "01db0834cbe3eefc",
+   "title": "Agentic Monitoring",
+   "url": "https://benjamincongdon.me/blog/2026/10/19/Agentic-Monitoring/",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-19T14:52:04Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Agentic Monitoring is a new open‑source framework that lets AI agents observe and adjust their own behavior in real time.",
+   "why": "It gives developers tighter control over autonomous agents, improving safety and reliability.",
+   "topic": "agents",
+   "tags": [
+    "open-source",
+    "monitoring",
+    "ai-agents"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "agentic-monitoring-framework",
+   "rawStoryKey": "agentic-monitoring-framework",
+   "desc": "Hacker News discussion with 106 points and 19 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50153225",
+   "hnId": "50153225",
+   "points": 106,
+   "comments": 19,
+   "image": "https://benjamincongdon.me/img/icon.png",
+   "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
@@ -1059,6 +1519,40 @@
    "buzzScore": 4
   },
   {
+   "id": "4f3fd2b661b1b6c3",
+   "title": "Maxwell: A new kind of model that sits between code and hardware",
+   "url": "https://heymaxwell.ai/",
+   "source": "hackernews",
+   "sourceName": "Hacker News",
+   "type": "community",
+   "date": "2026-10-19T13:47:56Z",
+   "addedAt": "2026-10-20T13:02:55Z",
+   "summary": "Maxwell is a new model that sits between code and hardware.",
+   "why": "It could streamline development of hardware-accelerated code.",
+   "topic": "models",
+   "tags": [
+    "maxwell",
+    "hardware",
+    "code"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "maxwell-model-code-hardware",
+   "rawStoryKey": "maxwell-model-code-hardware",
+   "desc": "Hacker News discussion with 102 points and 45 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50152466",
+   "hnId": "50152466",
+   "points": 103,
+   "comments": 45,
+   "image": "https://heymaxwell.ai/og/og-dark.jpg",
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
    "id": "bb2f9104933712ab",
    "title": "Qwen3-4B with AI writing tricks trained out",
    "url": "https://100toolkit.com/blog/deslop-model/",
@@ -1083,8 +1577,8 @@
    "desc": "Hacker News discussion with 146 points and 108 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50151928",
    "hnId": "50151928",
-   "points": 146,
-   "comments": 108,
+   "points": 149,
+   "comments": 110,
    "image": "https://100toolkit.com/blog/deslop-model/og.png",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -1118,7 +1612,7 @@
    "desc": "Hacker News discussion with 128 points and 64 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50151390",
    "hnId": "50151390",
-   "points": 128,
+   "points": 130,
    "comments": 64,
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -1151,8 +1645,8 @@
    "desc": "Hacker News discussion with 136 points and 116 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50151376",
    "hnId": "50151376",
-   "points": 136,
-   "comments": 116,
+   "points": 147,
+   "comments": 131,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1244,13 +1738,13 @@
    "desc": "Hacker News discussion with 347 points and 490 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50151036",
    "hnId": "50151036",
-   "points": 347,
-   "comments": 490,
-   "engagementBonus": 1,
+   "points": 515,
+   "comments": 634,
+   "engagementBonus": 2,
    "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 5
   },
   {
    "id": "c187ea7b68bc5579",
@@ -1277,8 +1771,8 @@
    "desc": "Hacker News discussion with 634 points and 362 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50150750",
    "hnId": "50150750",
-   "points": 634,
-   "comments": 362,
+   "points": 644,
+   "comments": 366,
    "image": "https://kubrick.htvapps.com/htv-prod/images/59afd81a-246a-4dd8-be64-a0263cee209e.png?crop=1.00xw%3A1.00xh%3B0%2C0&resize=1200%3A*",
    "engagementBonus": 2,
    "clusterSize": 1,
@@ -1312,8 +1806,8 @@
    "desc": "Hacker News discussion with 570 points and 106 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50150434",
    "hnId": "50150434",
-   "points": 570,
-   "comments": 106,
+   "points": 592,
+   "comments": 115,
    "image": "https://mistral.ai/cms-media/api/media/file/og-timestral.webp",
    "engagementBonus": 2,
    "clusterSize": 1,
@@ -1467,7 +1961,7 @@
    "rawStoryKey": "lampline-self-hosted-voice-agent-platform",
    "desc": "Self-hosted voice agent platform: import your Dialogflow CX and CX Agent Studio agents, build and test them, and take calls on your own hardware. 20 model providers, phone and SIP through jambonz. (Language: Python; 119 stars)",
    "repoFullName": "C4rohan/Lampline",
-   "stars": 120,
+   "stars": 145,
    "image": "https://repository-images.githubusercontent.com/1425227613/0211eab0-0bba-4450-b7a1-0816011a5792",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -1499,7 +1993,7 @@
    "rawStoryKey": "memt-1-0-repo",
    "desc": "Official repository for MemT-1.0 (Language: Python; 99 stars)",
    "repoFullName": "MemTensor/MemT-1.0",
-   "stars": 101,
+   "stars": 178,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1530,7 +2024,7 @@
    "rawStoryKey": "n33-bulk-9router-toolkit",
    "desc": "Zero-dependency Node toolkit: bulk-create n33.ai accounts, harvest session cookies and serve the 10 free models through 9Router as an OpenAI-compatible provider. (Language: JavaScript; 23 stars)",
    "repoFullName": "0xgetz/n33-bulk-9router",
-   "stars": 23,
+   "stars": 22,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1648,8 +2142,8 @@
    "desc": "Hacker News discussion with 204 points and 149 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50145507",
    "hnId": "50145507",
-   "points": 295,
-   "comments": 210,
+   "points": 297,
+   "comments": 213,
    "engagementBonus": 1,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1682,7 +2176,7 @@
    "desc": "Hacker News discussion with 433 points and 215 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50145337",
    "hnId": "50145337",
-   "points": 504,
+   "points": 509,
    "comments": 236,
    "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
    "engagementBonus": 2,
@@ -1836,7 +2330,7 @@
    "desc": "Hacker News discussion with 165 points and 165 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50141429",
    "hnId": "50141429",
-   "points": 170,
+   "points": 171,
    "comments": 167,
    "image": "https://cdn.mos.cms.futurecdn.net/SVPa8KkaDwkeyAtLnMhyKW-1920-80.png",
    "engagementBonus": 0,
@@ -1870,8 +2364,8 @@
    "desc": "Hacker News discussion with 131 points and 222 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50139873",
    "hnId": "50139873",
-   "points": 152,
-   "comments": 251,
+   "points": 156,
+   "comments": 252,
    "image": "https://www-cdn.anthropic.com/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -1905,7 +2399,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "fa83cda8cb172160",
@@ -1932,7 +2426,7 @@
    "rawStoryKey": "hh-sniper-job-automation",
    "desc": "Снайпер вакансий hh.ru: LLM-скоринг под ваш профиль, автопилот откликов в первые 10 минут после публикации (обгоняем ботов), статические письма с гвардом от галлюцинаций. Всё локально на вашем ПК, официальный API, Python. (Language: Python; 31 stars)",
    "repoFullName": "Riper21/hh-sniper",
-   "stars": 31,
+   "stars": 32,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1999,7 +2493,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "4c6c987b65345788",
@@ -2055,8 +2549,8 @@
    "desc": "Hacker News discussion with 215 points and 170 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50135762",
    "hnId": "50135762",
-   "points": 272,
-   "comments": 211,
+   "points": 274,
+   "comments": 212,
    "image": "https://blog.picheta.me/_astro/killswitch-banner.0YTJ74BT.png",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -2089,7 +2583,7 @@
    "rawStoryKey": "fastest-open-source-ai-gateway",
    "desc": "⚡ The fastest open-source AI gateway — one Rust binary with a built-in console to route, secure, budget and observe every LLM call across OpenAI, Anthropic, Gemini, Bedrock and more. (Language: Rust; 45 stars)",
    "repoFullName": "eliasbiondo/antirion",
-   "stars": 101,
+   "stars": 125,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -2295,7 +2789,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50133231",
    "hnId": "50133231",
    "points": 174,
-   "comments": 87,
+   "comments": 88,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -2398,7 +2892,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "ac0eba5f39915c21",
@@ -3141,7 +3635,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "1db14d807722c8b3",
@@ -3171,7 +3665,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "1aa8b1ac1c09583d",
@@ -3376,7 +3870,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "3b57891e2e8b8671",
@@ -3916,7 +4410,7 @@
    "clusterSources": [
     "GitHub: Ollama releases"
    ],
-   "buzzScore": 7
+   "buzzScore": 5
   },
   {
    "id": "8031ac42ea200d6c",
@@ -4290,7 +4784,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "1d4cff712a9a1281",
@@ -4404,12 +4898,13 @@
    "rawStoryKey": "youtube-music-ai-labels",
    "desc": "The AI music labels are rolling out now in YouTube Music and will come to YouTube soon.",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/10/youtube-music-gen-ai-labels-fill2-500x500.png",
-   "clusterSize": 2,
+   "clusterSize": 4,
    "isPrimary": true,
    "clusterSources": [
-    "TechCrunch AI"
+    "TechCrunch AI",
+    "The Verge AI"
    ],
-   "buzzScore": 4
+   "buzzScore": 5
   },
   {
    "id": "2cd92b812c13525a",
@@ -5033,7 +5528,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "78095fed0138226c",
@@ -5271,7 +5766,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 2
   },
   {
    "id": "2fac9b600466967a",
@@ -5391,10 +5886,10 @@
    "rawStoryKey": "youtube-music-ai-labels",
    "desc": "The label will appear on the player page and include songs entirely generated by AI or partially, such as AI involved in composition and vocals.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/youtube-music-gen-ai-labels.png?w=1080",
-   "clusterSize": 2,
+   "clusterSize": 4,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 5
   },
   {
    "id": "939ecdfa504040eb",
@@ -5416,14 +5911,14 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "youtube-ai-labels-on-songs",
+   "storyKey": "youtube-music-ai-labels",
    "rawStoryKey": "youtube-ai-labels-on-songs",
    "desc": "YouTube is adding a \"Made with AI\" label to tracks that were \"altered or fully generated\" using AI, with a similar approach to its existing process for applying AI labels to videos. It doesn't sound like this will apply to any and all use of AI tools in making music, but according to YouTube, it […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/youtube-music-gen-ai-labels.width-1200.format-webp.webp?quality=90&strip=all&crop=4,48.489005235602,89.6,46.910994764398",
-   "clusterSize": 1,
-   "isPrimary": true,
+   "clusterSize": 4,
+   "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 5
   },
   {
    "id": "d7ad5c7f5c98e60d",
@@ -6151,14 +6646,14 @@
    "importance": 2,
    "ai": true,
    "provider": "groq",
-   "storyKey": "deezer-ai-music-filter",
+   "storyKey": "youtube-music-ai-labels",
    "rawStoryKey": "deezer-ai-music-filter",
    "desc": "Deezer said that the new toggle will be rolled out by the end of the year.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/10/Deezer-AI-detection-feat.jpg?w=1067",
-   "clusterSize": 1,
-   "isPrimary": true,
+   "clusterSize": 4,
+   "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 2
+   "buzzScore": 4
   },
   {
    "id": "2e447a71d8fc2e9a",
@@ -6581,7 +7076,7 @@
    "clusterSize": 5,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "5cb1618c1db568b5",
@@ -6933,7 +7428,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "082a179fcd588810",
@@ -7836,7 +8331,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 4
   },
   {
    "id": "316153953adff70c",
@@ -7865,7 +8360,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 4
   },
   {
    "id": "14f10367a8e52260",
@@ -8375,7 +8870,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 4
   },
   {
    "id": "ffc748cb8d88a919",
@@ -8647,7 +9142,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "8f872270b5d9a3f4",
@@ -8737,7 +9232,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "d81a3a0e0e0d67fe",
@@ -9110,7 +9605,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "5a6b7e23ee06a3b9",
@@ -9385,7 +9880,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "bdf59882f2c6edb2",
@@ -10255,7 +10750,7 @@
    "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "821afa65ec965089",
@@ -11589,7 +12084,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "bbf031688bbf1f4e",
@@ -12121,7 +12616,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "ca5fcc9baf2eb627",
@@ -12179,7 +12674,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "1112027d5901b6f1",
@@ -12960,7 +13455,7 @@
    "clusterSources": [
     "GitHub: transformers releases"
    ],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "b7d1e3ccac451e40",
@@ -13221,7 +13716,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "6bd4649820398383",
@@ -15300,7 +15795,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "d84a0a5ad3123c6d",
@@ -15694,7 +16189,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "7a12fe93b8a77091",
@@ -16281,7 +16776,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "031bdf2f5fd5dad0",
@@ -16340,7 +16835,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 3
   },
   {
    "id": "caef0d92a639ca50",
@@ -17722,7 +18217,7 @@
    "clusterSize": 7,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 4
   },
   {
    "id": "3bcfe2f4d2ef6b21",
@@ -18699,7 +19194,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "20a57e552aef7b98",
@@ -18726,7 +19221,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 3
+   "buzzScore": 2
   },
   {
    "id": "5113cb6536806d6e",
@@ -18976,7 +19471,7 @@
    "clusterSize": 6,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "39b9fbb58d7c1263",
@@ -20089,7 +20584,7 @@
    "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 2
   },
   {
    "id": "87a7234dae36c1fa",
@@ -20229,7 +20724,7 @@
    "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "9995bf5b357f721c",
@@ -22846,7 +23341,7 @@
    "clusterSize": 2,
    "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "336b976f9dc2058a",
@@ -23097,7 +23592,7 @@
    "clusterSize": 2,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "1eb6183d721b63e0",
@@ -23430,7 +23925,7 @@
    "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "9ce258e5a60bddae",
@@ -24710,7 +25205,7 @@
    "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "597975da49400eea",
@@ -25052,7 +25547,7 @@
    "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 6
+   "buzzScore": 3
   },
   {
    "id": "5e33c235053c0e89",
