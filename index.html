@@ -17,6 +17,7 @@
   --t-dev:#2F9E73; --t-dev-bg:#E1F5EA; --t-dev-tint:#F0FAF4; --t-dev-line:#C9EAD9;
   --t-research:#D08A3E; --t-research-bg:#FBEEDA; --t-research-tint:#FDF7EC; --t-research-line:#F3DFB8;
   --t-industry:#D1618C; --t-industry-bg:#FBE4ED; --t-industry-tint:#FDF1F5; --t-industry-line:#F5CEDD;
+  --t-general:#2F93B0; --t-general-bg:#DFF3F8; --t-general-tint:#F0FAFC; --t-general-line:#C6E8F0;
   --ok:#2F9E73; --ok-bg:#E1F5EA; --bad:#D1618C; --bad-bg:#FBE4ED; --warn:#D08A3E; --warn-bg:#FBEEDA;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -30,6 +31,7 @@
   --t-dev:#5FD1A4; --t-dev-bg:#133A2C; --t-dev-tint:#0F2A20; --t-dev-line:#1F5A43;
   --t-research:#EFB166; --t-research-bg:#422D12; --t-research-tint:#2B1D0E; --t-research-line:#5A3E18;
   --t-industry:#F08FB1; --t-industry-bg:#452233; --t-industry-tint:#2C1721; --t-industry-line:#5E2F44;
+  --t-general:#5FC4E0; --t-general-bg:#123A45; --t-general-tint:#0D2930; --t-general-line:#1F5968;
   --ok:#5FD1A4; --ok-bg:#133A2C; --bad:#F08FB1; --bad-bg:#452233; --warn:#EFB166; --warn-bg:#422D12;
 }}
 :root[data-theme="dark"]{
@@ -41,6 +43,7 @@
   --t-dev:#5FD1A4; --t-dev-bg:#133A2C; --t-dev-tint:#0F2A20; --t-dev-line:#1F5A43;
   --t-research:#EFB166; --t-research-bg:#422D12; --t-research-tint:#2B1D0E; --t-research-line:#5A3E18;
   --t-industry:#F08FB1; --t-industry-bg:#452233; --t-industry-tint:#2C1721; --t-industry-line:#5E2F44;
+  --t-general:#5FC4E0; --t-general-bg:#123A45; --t-general-tint:#0D2930; --t-general-line:#1F5968;
   --ok:#5FD1A4; --ok-bg:#133A2C; --bad:#F08FB1; --bad-bg:#452233; --warn:#EFB166; --warn-bg:#422D12;
 }
 *{box-sizing:border-box}
@@ -62,6 +65,7 @@ img{display:block}
 .tp-research{--c:var(--t-research);--c-bg:var(--t-research-bg);--c-tint:var(--t-research-tint);--c-line:var(--t-research-line)}
 .tp-industry{--c:var(--t-industry);--c-bg:var(--t-industry-bg);--c-tint:var(--t-industry-tint);--c-line:var(--t-industry-line)}
 .tp-agents{--c:var(--t-agents);--c-bg:var(--t-agents-bg);--c-tint:var(--t-agents-tint);--c-line:var(--t-agents-line)}
+.tp-general{--c:var(--t-general);--c-bg:var(--t-general-bg);--c-tint:var(--t-general-tint);--c-line:var(--t-general-line)}
 .chip{display:inline-flex;align-items:center;flex:none;font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;color:var(--c,var(--ink-2))}
 .dot{width:7px;height:7px;border-radius:1px;flex:none;display:inline-block;background:var(--c,var(--muted))}
 
@@ -316,6 +320,7 @@ aside.filters{position:sticky;top:16px;display:grid;gap:22px;padding:18px}
       <button role="tab" id="tab-models" aria-selected="false" aria-controls="view-models">Models</button>
       <button role="tab" id="tab-agents" aria-selected="false" aria-controls="view-agents">Agents</button>
       <button role="tab" id="tab-dev" aria-selected="false" aria-controls="view-dev">Dev tools</button>
+      <button role="tab" id="tab-general" aria-selected="false" aria-controls="view-general">General Dev</button>
       <button role="tab" id="tab-research" aria-selected="false" aria-controls="view-research">Research</button>
       <button role="tab" id="tab-industry" aria-selected="false" aria-controls="view-industry">Industry</button>
       <button role="tab" id="tab-search" aria-selected="false" aria-controls="view-search">
@@ -343,6 +348,9 @@ aside.filters{position:sticky;top:16px;display:grid;gap:22px;padding:18px}
   </section>
   <section id="view-dev" role="tabpanel" aria-labelledby="tab-dev" hidden>
     <div class="cat-rest" id="cat-dev-rest"></div>
+  </section>
+  <section id="view-general" role="tabpanel" aria-labelledby="tab-general" hidden>
+    <div class="cat-rest" id="cat-general-rest"></div>
   </section>
   <section id="view-research" role="tabpanel" aria-labelledby="tab-research" hidden>
     <div class="cat-rest" id="cat-research-rest"></div>
@@ -428,7 +436,7 @@ aside.filters{position:sticky;top:16px;display:grid;gap:22px;padding:18px}
 </div>
 
 <script>
-const TOPICS={models:"Models & LLMs",agents:"Agents",dev:"Dev tools",research:"Research",industry:"Industry & policy"};
+const TOPICS={models:"Models & LLMs",agents:"Agents",dev:"Dev tools",general:"General Dev",research:"Research",industry:"Industry & policy"};
 const TYPES={news:"News",lab:"Lab blog",research:"Papers",github:"GitHub",video:"Video",community:"Community"};
 const RANGES=[["1","24h"],["3","3 days"],["7","7 days"],["30","30 days"],["all","All"]];
 const STATUS={ok:"Working",error:"Failed",pending:"Not checked yet",off:"Off"};
@@ -544,7 +552,7 @@ function resultCard(it,ws){
   return `<a class="resrow ${tp(it.topic)}${read?" read":""}" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener" data-id="${esc(it.id)}">
     ${isImg(it.image)?`<img class="res-photo" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">`:""}
     <div class="res-body">
-      <div class="res-meta"><span class="chip">${esc(TOPICS[it.topic]||it.topic)}</span><span class="src">${hlFn(it.sourceName)}</span><time datetime="${esc(it.date)}">${esc(fmtAgo(it.date))}</time>${it.clusterSize>1?`<span class="srcmore">+${it.clusterSize-1} src</span>`:""}</div>
+      <div class="res-meta"><span class="chip">${esc(TOPICS[it.topic]||it.topic)}</span><span class="src">${hlFn(it.sourceName)}</span><time datetime="${esc(it.date)}">${esc(fmtAgo(it.date))}</time>${clusterSourceNames(it).length>1?`<span class="srcmore">+${clusterSourceNames(it).length-1} src</span>`:""}</div>
       <h3>${hlFn(it.title)}</h3>
       ${it.summary?`<p>${hlFn(truncate(it.summary,100))}</p>`:""}
     </div>
@@ -632,7 +640,7 @@ function tileHTML(srcId,items,top){
   const it=items[idx];const read=S.read.has(it.id);
   const dir=S._animSrc[srcId];delete S._animSrc[srcId];
   return `<article class="tile ${tp(it.topic)}${top?" top":""}" data-source="${esc(srcId)}" tabindex="0" aria-label="${esc(it.sourceName)}, story ${idx+1} of ${items.length}">
-  <header class="tile-head"><span class="src">${esc(it.sourceName)}</span>${it.clusterSize>1?`<span class="srcmore">+${it.clusterSize-1} src</span>`:""}${top?`<span class="chip">${esc(TOPICS[it.topic]||it.topic)}</span>`:`<span class="dot" title="${esc(TOPICS[it.topic]||it.topic)}"></span>`}</header>
+  <header class="tile-head"><span class="src">${esc(it.sourceName)}</span>${clusterSourceNames(it).length>1?`<span class="srcmore">+${clusterSourceNames(it).length-1} src</span>`:""}${top?`<span class="chip">${esc(TOPICS[it.topic]||it.topic)}</span>`:`<span class="dot" title="${esc(TOPICS[it.topic]||it.topic)}"></span>`}</header>
   <div class="tile-body"><a class="slide${read?" read":""}${dir?` dir-${dir>0?"down":"up"}`:""}" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener" data-id="${esc(it.id)}">
     ${isImg(it.image)?`<img class="slide-photo" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">`:""}
     <div class="slide-body"><h2>${esc(it.title)}</h2>${it.summary?`<p class="sum">${esc(truncate(it.summary,top?130:90))}</p>`:""}</div></a></div>

@@ -1,15 +1,15 @@
 """Signal Desk collector.
 
 Reads sources.json, pulls the newest items from each enabled source,
-skips anything already seen, asks Gemini (with Groq as a backup once
-Gemini's daily quota runs out) to summarize and tag the new items,
+skips anything already seen, asks Groq (with Gemini as a backup once
+Groq's models are unusable) to summarize and tag the new items,
 and writes:
 
   data/items.json    - the feed shown on the Feed tab
   data/sources.json  - each source plus its last check result (Sources tab)
 
-Run locally:  GEMINI_API_KEY=... python scripts/collect.py
-Add GROQ_API_KEY=... too to use Groq as a fallback once Gemini's quota runs out.
+Run locally:  GROQ_API_KEY=... python scripts/collect.py
+Add GEMINI_API_KEY=... too to use Gemini as a backup once Groq's models run out.
 Without any key it still runs, using the feed's own description as the summary.
 """
 from __future__ import annotations
@@ -41,8 +41,9 @@ MAX_NEW_PER_RUN = int(os.getenv("MAX_NEW_PER_RUN", "80")) # cap on summarization
 MODELS = [m.strip() for m in (os.getenv("GEMINI_MODELS") or os.getenv("GEMINI_MODEL")
                                or "gemini-3.8-flash").split(",") if m.strip()]
 GROQ_MODELS = [m.strip() for m in (os.getenv("GROQ_MODELS") or os.getenv("GROQ_MODEL")
-                                    or "openai/gpt-oss-20b,openai/gpt-oss-120b,qwen/qwen3.6-27b").split(",") if m.strip()]
-TOPICS = ["models", "agents", "dev", "research", "industry"]
+                                    or "openai/gpt-oss-20b,openai/gpt-oss-120b,qwen/qwen3.6-27b,"
+                                       "llama-3.3-70b-versatile,llama-3.1-8b-instant").split(",") if m.strip()]
+TOPICS = ["models", "agents", "dev", "general", "research", "industry"]
 CLUSTER_WINDOW_DAYS = 4   # stories further apart than this are never clustered together
 CLUSTER_BUZZ_CAP = 3      # max bonus buzzScore gets from being covered by many sources
 OFFICIAL_TYPES = {"lab", "research", "github"}  # company blogs, papers, release pages - the
@@ -364,7 +365,7 @@ Return ONLY a JSON object with these keys:
 - "title": a clean headline in English (fix casing, remove site names, dates or category labels stuck to it; translate it if the source isn't in English). Keep the original wording where possible.
 - "summary": ONE short, plain sentence in English stating just the key finding or fact - what was actually released, found, or announced. No preamble, no scene-setting, no filler words. Use only facts in the title and feed text; do not invent numbers or claims.
 - "why": one short sentence on why it matters to someone following AI, or "" if you can't say without guessing.
-- "topic": one of "models" (LLMs, model releases, AI products), "agents" (AI agents, agentic coding tools, autonomous/multi-step systems), "dev" (developer tools, open source, libraries), "research" (papers, science, benchmarks), "industry" (business, funding, policy, safety incidents, regulation, hardware).
+- "topic": one of "models" (LLMs, model releases, AI products), "agents" (AI agents, agentic coding tools, autonomous/multi-step systems), "dev" (AI/ML-specific developer tools, open source libraries, model-serving frameworks), "general" (general, non-AI-specific software development: programming languages, frameworks, databases, cloud, DevOps, security, web/backend tooling), "research" (papers, science, benchmarks), "industry" (business, funding, policy, safety incidents, regulation, hardware).
 - "tags": 2-4 short lowercase tags.
 - "importance": 1-5, where 5 is a major release or event most people in AI will hear about this week.
 - "story_key": a short kebab-case slug identifying the underlying news event, e.g. "gpt-5-2-release" or "anthropic-claude-agent-sdk" - so the same event reported by different outlets gets the same slug. Keep it specific to the event, not the general topic."""
@@ -381,7 +382,7 @@ def fallback(raw: dict, src: dict) -> dict:
 
 
 _model_state = {"idx": 0}      # sticks with the first working Gemini model; only advances when it's unusable
-_groq_state = {"idx": 0}       # same, for the Groq backup
+_groq_state = {"idx": 0}       # same, for Groq - tried first; Gemini is the backup
 
 
 def _should_switch_model(exc: Exception) -> bool:
@@ -463,18 +464,6 @@ def summarize(raw: dict, src: dict, client, groq_key: str | None) -> dict:
         return fallback(raw, src)
     msg = PROMPT.format(source=src["name"], stype=src["type"], title=raw["title"], url=raw["url"], desc=raw.get("desc") or "(none)")
 
-    if client is not None:
-        while _model_state["idx"] < len(MODELS):
-            model = MODELS[_model_state["idx"]]
-            data, switch = _call_model(client, model, msg)
-            if data is not None:
-                return _finalize(data, src, "gemini")
-            if not switch:
-                break  # transient failure, retries used up - try the backup for this item only
-            _model_state["idx"] += 1
-            if _model_state["idx"] < len(MODELS):
-                print(f"    switching to model {MODELS[_model_state['idx']]}", file=sys.stderr)
-
     if groq_key:
         while _groq_state["idx"] < len(GROQ_MODELS):
             model = GROQ_MODELS[_groq_state["idx"]]
@@ -482,10 +471,22 @@ def summarize(raw: dict, src: dict, client, groq_key: str | None) -> dict:
             if data is not None:
                 return _finalize(data, src, "groq")
             if not switch:
-                break
+                break  # transient failure, retries used up - try the backup for this item only
             _groq_state["idx"] += 1
             if _groq_state["idx"] < len(GROQ_MODELS):
                 print(f"    switching to Groq model {GROQ_MODELS[_groq_state['idx']]}", file=sys.stderr)
+
+    if client is not None:
+        while _model_state["idx"] < len(MODELS):
+            model = MODELS[_model_state["idx"]]
+            data, switch = _call_model(client, model, msg)
+            if data is not None:
+                return _finalize(data, src, "gemini")
+            if not switch:
+                break
+            _model_state["idx"] += 1
+            if _model_state["idx"] < len(MODELS):
+                print(f"    switching to model {MODELS[_model_state['idx']]}", file=sys.stderr)
 
     return fallback(raw, src)
 
@@ -557,6 +558,10 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
     view (Top Stories, category tabs, the Feed tab) once its original item ages out of range.
 
     Mutates each item in place with storyKey/clusterSize/clusterSources/isPrimary/buzzScore.
+    buzzScore's cluster bonus counts distinct *sources* in the cluster, not raw member count -
+    a same-project source (see single_project_sources below) can rack up a large clusterSize
+    from one outlet posting several point releases in a row, which isn't the same signal as
+    several independent outlets covering one story.
     Also redirects the primary's own `url` to an official source (OFFICIAL_TYPES) elsewhere in
     the cluster when the primary itself isn't one - title/summary stay the primary's, only the
     click-through target changes, so a story never links to a news writeup when the company's
@@ -658,7 +663,15 @@ def cluster_items(items: list[dict], embeddings: dict[str, list[float]] | None =
             it["clusterSize"] = size
             it["isPrimary"] = pos == 0
             it["clusterSources"] = sorted(primary_sources) if pos == 0 else []
-            it["buzzScore"] = (it.get("importance", 2) + min(size - 1, CLUSTER_BUZZ_CAP)
+            # min(..., CLUSTER_BUZZ_CAP) is over len(primary_sources) - distinct *sources* in the
+            # cluster - not `size` (raw member count). A same-project source (e.g. a GitHub
+            # releases feed in single_project_sources) can cluster several of its own point
+            # releases together at a lenient Jaccard threshold; that's one source posting
+            # several times, not several sources corroborating one story, so it shouldn't earn
+            # the same buzz bonus as real multi-source coverage (confirmed in production data:
+            # six sequential Ollama point releases from one feed maxed this bonus out at
+            # clusterSize=4 even though there was effectively zero other-source corroboration).
+            it["buzzScore"] = (it.get("importance", 2) + min(len(primary_sources), CLUSTER_BUZZ_CAP)
                                 + it.get("engagementBonus", 0))
 
 
@@ -672,15 +685,15 @@ def main() -> None:
     old_status = {s["id"]: s for s in load_json(STATUS_FILE, {"sources": []}).get("sources", [])}
     embed_cache: dict[str, list[float]] = load_json(EMBED_CACHE_FILE, {})
 
+    groq_key = os.getenv("GROQ_API_KEY")
+    if not groq_key:
+        print("GROQ_API_KEY not set - skipping Groq.")
     client = None
     if os.getenv("GEMINI_API_KEY"):
         from google import genai
         client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     else:
-        print("GEMINI_API_KEY not set - skipping Gemini.")
-    groq_key = os.getenv("GROQ_API_KEY")
-    if not groq_key:
-        print("GROQ_API_KEY not set - no Groq backup if Gemini's quota runs out.")
+        print("GEMINI_API_KEY not set - no Gemini backup if Groq's models fail.")
     if client is None and not groq_key:
         print("No AI key set at all - using feed descriptions instead of AI summaries.")
 

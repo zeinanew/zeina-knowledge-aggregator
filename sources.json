@@ -17,7 +17,7 @@
   {"id": "openai", "name": "OpenAI News", "type": "lab", "kind": "rss", "topics": ["models", "industry"], "enabled": true,
    "url": "https://openai.com/news/", "feed": "https://openai.com/news/rss.xml"},
   {"id": "anthropic", "name": "Anthropic News", "type": "lab", "kind": "html_links", "topics": ["models", "industry"], "enabled": true,
-   "url": "https://www.anthropic.com/news", "feed": "https://www.anthropic.com/news", "link_pattern": "^/news/[a-z0-9-]+$", "base": "https://www.anthropic.com"},
+   "url": "https://www.anthropic.com/news", "feed": "https://www.anthropic.com/news", "link_pattern": "^/news/(?!announcements$|features$|partnerships$|policy$|safeguards$|security$)[a-z0-9-]+$", "base": "https://www.anthropic.com"},
   {"id": "deepmind", "name": "Google DeepMind", "type": "lab", "kind": "rss", "topics": ["models", "research"], "enabled": true,
    "url": "https://deepmind.google/blog/", "feed": "https://deepmind.google/blog/rss.xml"},
   {"id": "huggingface", "name": "Hugging Face Blog", "type": "lab", "kind": "rss", "topics": ["dev", "models"], "enabled": true,
@@ -55,6 +55,15 @@
   {"id": "hackernews", "name": "Hacker News", "type": "community", "kind": "hn", "topics": ["dev", "models", "industry"], "enabled": true, "limit": 8,
    "url": "https://news.ycombinator.com/", "min_points": 100,
    "keywords": ["ai", "llm", "gpt", "claude", "gemini", "openai", "anthropic", "deepmind", "model", "agent", "neural", "machine learning", "transformer", "inference", "gpu", "nvidia", "copilot", "codex", "diffusion", "rag", "fine-tun", "benchmark"]},
+
+  {"id": "github-blog", "name": "The GitHub Blog", "type": "news", "kind": "rss", "topics": ["general"], "enabled": true,
+   "url": "https://github.blog/", "feed": "https://github.blog/feed/"},
+  {"id": "stackoverflow-blog", "name": "Stack Overflow Blog", "type": "news", "kind": "rss", "topics": ["general"], "enabled": true,
+   "url": "https://stackoverflow.blog/", "feed": "https://stackoverflow.blog/feed/"},
+
+  {"id": "hackernews-dev", "name": "Hacker News: General Dev", "type": "community", "kind": "hn", "topics": ["general"], "enabled": true, "limit": 8,
+   "url": "https://news.ycombinator.com/", "min_points": 100,
+   "keywords": ["python", "javascript", "typescript", "rust", "golang", "java", "c++", "database", "postgres", "sql", "kubernetes", "docker", "container", "linux", "security", "vulnerability", "cve", "framework", "open source", "api", "web", "browser", "devops", "cloud", "compiler", "git"]},
 
   {"id": "x-elonmusk", "name": "X: Elon Musk", "type": "community", "kind": "rss", "topics": ["industry", "models"], "enabled": false, "limit": 5,
    "url": "https://x.com/elonmusk", "feed": "REPLACE_WITH_YOUR_RSS_BRIDGE_URL_FOR_elonmusk",

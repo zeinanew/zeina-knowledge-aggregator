@@ -74,7 +74,7 @@ Edit `sources.json` on GitHub. There's a link to it on the site's Sources tab.
 | `hn` | Hacker News stories | `min_points`, `keywords` |
 | `html_links` | Sites with no feed (e.g. Anthropic) | `link_pattern`, `base` |
 
-Every source also needs `id` (unique, lowercase), `name`, `type` (`news`, `lab`, `research`, `github`, `video`, `community`), `topics` (any of `models`, `agents`, `dev`, `research`, `industry`) and `url` (the page people see).
+Every source also needs `id` (unique, lowercase), `name`, `type` (`news`, `lab`, `research`, `github`, `video`, `community`), `topics` (any of `models`, `agents`, `dev`, `general`, `research`, `industry`) and `url` (the page people see).
 
 **Finding feeds:** many sites have one at `/feed`, `/rss` or `/rss.xml`. Every YouTube channel has one at `https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID`. To find the channel ID, open the channel, click **More about this channel → Share channel → Copy channel ID**.
 

@@ -11,7 +11,7 @@ There is no backend, database, or build step.
 | Layer | Technology |
 |---|---|
 | Collector | Python 3.12, `feedparser`, `requests` |
-| Summarization | Google Gemini (`google-genai`), with Groq's OpenAI-compatible chat API as a fallback |
+| Summarization | Groq's OpenAI-compatible chat API, with Google Gemini (`google-genai`) as a fallback |
 | Scheduling | Windows Task Scheduler (`scripts/refresh_local.ps1`), daily - GitHub Actions no longer runs on a cron (see below) |
 | CI | GitHub Actions: `refresh.yml` (manual/`sources.json`-edit-triggered collect) + `deploy.yml` (publish on every push) |
 | Hosting | GitHub Pages (static files served as-is) |
@@ -134,12 +134,12 @@ An item is skipped if either key has already been seen.
 
 `summarize()` sends a single prompt (`PROMPT`) with the title/URL/feed text to an LLM
 and expects back a JSON object: `relevant`, `title` (cleaned/translated), `summary`,
-`why`, `topic` (one of `models`, `agents`, `dev`, `research`, `industry`), `tags`, `importance`,
+`why`, `topic` (one of `models`, `agents`, `dev`, `general`, `research`, `industry`), `tags`, `importance`,
 and `story_key` (used for clustering, see below).
 
 Provider fallback chain, per item:
-1. **Gemini** — tries each model in `GEMINI_MODELS` in order.
-2. **Groq** — if Gemini fails outright (not just rate-limited), tries each model in `GROQ_MODELS`.
+1. **Groq** — tries each model in `GROQ_MODELS` in order.
+2. **Gemini** — if Groq fails outright (not just rate-limited), tries each model in `GEMINI_MODELS`.
 3. **Fallback** — if no key is set or every model failed, `fallback()` reuses the feed's
    own description verbatim (untranslated, no "why line", `ai: false`) so the item still
    appears in the feed instead of being dropped.
@@ -210,7 +210,9 @@ every recency-based view (Top Stories, category tabs, Feed tab tiles) the moment
 aged out of range. Within a group, the item with the highest `importance` (**most recent** `date`
 as tie-break, not earliest - so a cluster's representative is always its freshest development)
 becomes `isPrimary`; every item gets `clusterSize`, `buzzScore` (`importance`, plus a
-`min(clusterSize - 1, CLUSTER_BUZZ_CAP)` bonus for being corroborated by more sources, plus that
+`min(distinct source count - 1, CLUSTER_BUZZ_CAP)` bonus for being corroborated by more sources -
+not raw `clusterSize`, so a same-project source clustering several of its own point releases
+together doesn't earn the same bonus as real multi-source coverage - plus that
 item's own `engagementBonus` from the step above), and the primary item gets `clusterSources` (the
 other sources in its cluster - empty for a same-source cluster, so no misleading "Covered by N
 sources" pill shows for what's really just one source's own release cadence). The frontend's Top
@@ -423,7 +425,7 @@ that attribute — the page itself has no theme toggle).
       "addedAt": "2026-10-01T05:09:07Z",// when Signal Desk first saw it
       "summary": "1-2 sentence summary",
       "why": "why it matters, or \"\"",
-      "topic": "models",                 // models|agents|dev|research|industry
+      "topic": "models",                 // models|agents|dev|general|research|industry
       "tags": ["tag1", "tag2"],
       "importance": 3,                   // 1-5, from the LLM
       "ai": true,                        // false = still on raw-feed fallback text
@@ -438,7 +440,7 @@ that attribute — the page itself has no theme toggle).
       "clusterSize": 3,                   // how many items (across sources) are in this story's cluster
       "isPrimary": true,                  // the one representative item per cluster - Top Stories only shows these
       "clusterSources": ["The Verge AI", "Ars Technica AI"], // other sources in the cluster (primary item only)
-      "buzzScore": 8                      // importance + min(clusterSize-1, CLUSTER_BUZZ_CAP) + engagementBonus
+      "buzzScore": 8                      // importance + min(distinct sources - 1, CLUSTER_BUZZ_CAP) + engagementBonus
     }
   ]
 }
@@ -489,9 +491,12 @@ An optional `limit` caps how many of that source's newest items are considered p
 - **Why per-source "tiles" with paging instead of one flat list**: with ~20 sources
   firing a handful of items a day, a flat feed would be dominated by whichever source
   posts most often. Tiles guarantee every source gets visible space.
-- **Why two separate summarization providers**: Gemini's free tier has a low daily
-  request cap; Groq is a free backup so the feed doesn't degrade to raw/untranslated
-  feed text once that cap is hit mid-run.
+- **Why two separate summarization providers, Groq first**: Gemini's free tier has a low
+  daily request cap (seen in practice: exhausted after ~20 items, then every later item
+  would otherwise burn 3 retries against it before falling through); Groq's limits are
+  much more forgiving, so it's tried first and handles the bulk of items, with Gemini as
+  a backup so the feed doesn't degrade to raw/untranslated feed text if Groq's models
+  are ever all unusable.
 - **Why rate-limit errors don't advance the model list but "not found" errors do**: see
   `_should_switch_model` in `collect.py` — conflating the two previously caused a single
   transient rate limit to permanently skip past the one working model.
