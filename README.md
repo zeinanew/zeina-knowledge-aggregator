@@ -103,9 +103,9 @@ Set these under **Settings → Secrets and variables → Actions → Variables**
 
 In `scripts/collect.py` you can also change `MAX_AGE_DAYS` (default 45: older stories drop off) and `PER_SOURCE_LIMIT` (default 8 new stories per source per day).
 
-To change the daily time: the schedule now lives in the Windows Task Scheduler job described
-below (GitHub Actions no longer runs on a cron, to avoid it and the local job racing each other -
-see "Run the daily refresh locally").
+To change the daily time: the schedule lives in `azure-pipelines.yml`'s `schedules:` cron (GitHub
+Actions no longer runs on a cron, to avoid it and the Azure Pipeline racing each other - see
+"Running the daily refresh from Azure DevOps" below).
 
 ## Run it on your own computer (optional)
 ```bash
@@ -114,35 +114,46 @@ GEMINI_API_KEY=... GROQ_API_KEY=... python scripts/collect.py   # GROQ_API_KEY i
 python -m http.server 8000     # then open http://localhost:8000
 ```
 
-## Run the daily refresh locally (Windows Task Scheduler)
+## Run the daily refresh locally (Windows Task Scheduler) - fallback only
 
-As an alternative (or backup) to the cloud scheduler, `scripts/refresh_local.ps1` runs `collect.py`
-and then commits + pushes `data/` if anything changed - the same thing the GitHub Action/Azure
-Pipeline does, just from your own machine.
+`scripts/refresh_local.ps1` runs `collect.py` and then commits + pushes `data/` if anything
+changed - the same thing the cloud pipeline does, just from your own machine. It's **not** the
+primary scheduler (see "Running the daily refresh from Azure DevOps" below for that) - it only
+runs at logon, as a catch-up for a day the cloud pipeline itself failed to run. It no-ops on any
+normal day where the cloud pipeline already pushed today's refresh.
 
 1. **Set your API keys as permanent environment variables** (Task Scheduler doesn't inherit a
    terminal session's env vars): **Start → "Edit the system environment variables" → Environment
    Variables → New...** (under your user account) → add `GEMINI_API_KEY` and `GROQ_API_KEY` with
    your key values. Close and reopen any terminal afterward for it to pick them up.
-2. The task is already registered (named `SignalDeskLocalRefresh`, daily at 8:00 AM, runs
-   `scripts\refresh_local.ps1`) - check/edit it any time in **Task Scheduler** (`taskschd.msc`), or
-   re-create it with:
+2. The task is already registered (named `SignalDeskLocalRefresh`, triggers 2 minutes after you
+   log on, runs `scripts\refresh_local.ps1`) - check/edit it any time in **Task Scheduler**
+   (`taskschd.msc`), or re-create it with:
    ```
-   schtasks /Create /SC DAILY /ST 08:00 /TN "SignalDeskLocalRefresh" /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"<repo path>\scripts\refresh_local.ps1\"" /RL LIMITED /F
+   schtasks /Create /SC ONLOGON /DELAY 0002:00 /TN "SignalDeskLocalRefresh" /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"<repo path>\scripts\refresh_local.ps1\"" /RL LIMITED /F
    ```
+   Don't also give it a daily trigger - it would fire at the same moment as the Azure Pipeline
+   cron below and race it, which is what used to cause unresolvable `data/*.json` merge conflicts.
 3. Output from each run is appended to `refresh-local.log` in the repo root (gitignored) - check
-   it if a run doesn't seem to have done anything.
+   it if a run doesn't seem to have done anything (most days it's expected to just log "Already
+   refreshed today" and exit).
 
-This only runs while your machine is on and you're logged in - unlike the cloud schedulers, it
-won't fire if the laptop is off or asleep at 8:00. Fine as a personal/backup refresh; not a
-substitute for the cloud scheduler if you need it to run no matter what.
+This only runs while your machine is on and you're logged in, so it's not a substitute for a true
+cloud scheduler - it only helps on a day the laptop happens to be logged in *and* the cloud
+pipeline failed.
 
-## Running on Azure DevOps instead of GitHub
+## Running the daily refresh from Azure DevOps
 
-If this repo lives in Azure DevOps rather than GitHub, `azure-pipelines.yml` (repo root) replaces
-`.github/workflows/refresh.yml`, and Azure Static Web Apps replaces GitHub Pages as the live host.
-See `ARCHITECTURE.md`'s "Running this on Azure DevOps instead of GitHub" section for the one-time
-setup (creating the Static Web App, adding Pipeline variables, repo permissions).
+`azure-pipelines.yml` (repo root) is the primary daily scheduler - it runs in Microsoft's cloud
+regardless of whether any laptop is on, unlike the Task Scheduler fallback above. GitHub Pages
+stays the live site: the pipeline's "Save new data" step pushes the daily commit to **both** Azure
+Repos and GitHub explicitly, since the two don't know about each other on their own. It also
+carries an optional `AzureStaticWebApp@0` step to additionally mirror the site onto Azure Static
+Web Apps - skip that step and its token variable if you don't want a second hosted copy.
+
+See `ARCHITECTURE.md`'s "Running the daily refresh from Azure DevOps (GitHub Pages stays the live
+site)" section for the one-time setup (creating the pipeline, a GitHub push token, repo
+permissions).
 
 ## Files
 ```
@@ -151,10 +162,10 @@ sources.json               the list of sources you control
 scripts/collect.py         fetches, removes duplicates, summarizes, writes data/
 data/items.json            the stories (written by the script)
 data/sources.json          each source's last check result (written by the script)
-scripts/refresh_local.ps1  what Task Scheduler runs daily (the actual schedule now lives here)
+scripts/refresh_local.ps1  logon-triggered fallback refresh (see "Run the daily refresh locally")
 .github/workflows/refresh.yml   collects on demand / when sources.json changes (GitHub Actions)
 .github/workflows/deploy.yml    publishes to Pages on every push (GitHub Actions)
-azure-pipelines.yml        the daily schedule (Azure Pipelines) - see "Running on Azure DevOps" above
+azure-pipelines.yml        the daily schedule (Azure Pipelines) - see "Running the daily refresh from Azure DevOps" above
 ```
 
 Summaries are short and always link to the original. Full articles are never copied.

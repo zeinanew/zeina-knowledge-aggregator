@@ -12,7 +12,7 @@ There is no backend, database, or build step.
 |---|---|
 | Collector | Python 3.12, `feedparser`, `requests` |
 | Summarization | Groq's OpenAI-compatible chat API, with Google Gemini (`google-genai`) as a fallback |
-| Scheduling | Windows Task Scheduler (`scripts/refresh_local.ps1`), daily - GitHub Actions no longer runs on a cron (see below) |
+| Scheduling | Azure Pipelines (`azure-pipelines.yml`), daily cron - primary. Windows Task Scheduler (`scripts/refresh_local.ps1`) is a logon-triggered fallback only. GitHub Actions no longer runs its own cron (see below) |
 | CI | GitHub Actions: `refresh.yml` (manual/`sources.json`-edit-triggered collect) + `deploy.yml` (publish on every push) |
 | Hosting | GitHub Pages (static files served as-is) |
 | Frontend | Single HTML file: vanilla JS, no framework, no bundler; `fetch` + `localStorage` |
@@ -31,9 +31,11 @@ data/items.json                 generated: the stories shown on the Feed/Search 
 data/sources.json               generated: per-source health/status for the Sources tab
 data/embeddings_cache.json      generated: collect.py's own cross-run cache, not used by the frontend
 index.html                      the entire frontend (HTML + CSS + JS in one file)
-scripts/refresh_local.ps1       what Windows Task Scheduler runs daily - collector + commit + push
+scripts/refresh_local.ps1       Task Scheduler's logon-triggered fallback - collector + commit + push
 .github/workflows/refresh.yml   manual/sources.json-edit-triggered collector run, commits data/
 .github/workflows/deploy.yml    publishes the repo to GitHub Pages on every push
+azure-pipelines.yml             the primary daily scheduler (Azure Pipelines) - pushes to both
+                                 Azure Repos and GitHub, see below
 requirements.txt                Python dependencies for the collector
 ```
 
@@ -43,50 +45,54 @@ requirements.txt                Python dependencies for the collector
 ## End-to-end flow
 
 ```
-+----------------------+     +-------------------------+
-| Windows Task         |     | GitHub Actions          |
-| Scheduler, 8am daily |     | refresh.yml - manual, or|
-| refresh_local.ps1    |     | push touching non-data/ |
-+----------+-----------+     +------------+------------+
-           |  pip install -r requirements.txt           |
-           v                                             v
-          +---------------------------------------------+
-          | scripts/collect.py                           |
-          | reads sources.json + existing data/items.json|
-          | fetches each enabled source, dedupes,        |
-          | summarizes new items                         |
-          +---------------------+-------------------------+
-                                | writes
-                                v
-                      +-------------------+
-                      | data/items.json   |---+
-                      | data/sources.json |   |  git commit "Refresh feed YYYY-MM-DD" + push
-                      +-------------------+   |
-                                              v
-                                   +--------------------------+
-                                   | GitHub Actions deploy.yml |  any push to main triggers this
-                                   | upload-pages-artifact +   |  (data-only pushes included)
-                                   | deploy-pages               |
-                                   +-------------+--------------+
-                                                 |
-                                                 v
-                                   +--------------------------+
-                                   | GitHub Pages             |
-                                   | (static hosting)         |
-                                   +-------------+--------------+
-                                                 |
-                                                 v
-                                   +--------------------------+
-                                   | index.html (browser)     |
-                                   | fetch()'s the two JSON   |
-                                   | files, client-side render|
-                                   +--------------------------+
++------------------------+     +-------------------------+
+| Azure Pipelines        |     | Windows Task Scheduler  |
+| daily cron (primary)   |     | at logon (fallback only,|
+| azure-pipelines.yml    |     | no-ops if already done) |
++-----------+------------+     +------------+------------+
+            |  pip install -r requirements.txt            |
+            v                                              v
+           +----------------------------------------------+
+           | scripts/collect.py                            |
+           | reads sources.json + existing data/items.json |
+           | fetches each enabled source, dedupes,         |
+           | summarizes new items                          |
+           +----------------------+-------------------------+
+                                  | writes
+                                  v
+                        +-------------------+
+                        | data/items.json   |
+                        | data/sources.json |
+                        +---------+---------+
+                                  | git commit "Refresh feed YYYY-MM-DD" + push to
+                                  | BOTH Azure Repos and GitHub explicitly (the two
+                                  | don't know about each other on their own)
+                                  v
+                       +----------------------------+
+                       | GitHub Actions deploy.yml  |  any push to main triggers this
+                       | upload-pages-artifact +    |  (data-only pushes included)
+                       | deploy-pages                |
+                       +-------------+--------------+
+                                     |
+                                     v
+                       +----------------------------+
+                       | GitHub Pages                |
+                       | (static hosting, live site)|
+                       +-------------+--------------+
+                                     |
+                                     v
+                       +----------------------------+
+                       | index.html (browser)        |
+                       | fetch()'s the two JSON       |
+                       | files, client-side render    |
+                       +----------------------------+
 ```
 
 Nothing is dynamic at request time — the browser only ever fetches two static JSON
 files. All the work (fetching feeds, calling the LLM, deduplicating) happens once a
-day, either on the user's own machine (Task Scheduler) or in CI (a manual/`sources.json`-edit
-run of `refresh.yml`), not per page view.
+day, primarily in Azure Pipelines; the Windows Task Scheduler job only does real work on
+a day the pipeline itself failed to run (otherwise its same-day guard makes it a no-op) -
+or in CI (a manual/`sources.json`-edit run of `refresh.yml`) - not per page view.
 
 ## `scripts/collect.py` — the collector
 
@@ -273,38 +279,65 @@ rarely line-merge cleanly, so whichever push landed second would fail to rebase.
   cancel-in-progress: true }` - fine to cancel an in-progress deploy in favor of a newer one, since
   a deploy doesn't write anything back to the repo the way the collect step does.
 
-## Running this on Azure DevOps instead of GitHub
+## Running the daily refresh from Azure DevOps (GitHub Pages stays the live site)
 
-`azure-pipelines.yml` (repo root) is the Azure Pipelines equivalent of `refresh.yml` above - same
-daily cron, same push trigger (minus data-only pushes), same `collect.py` run, same "commit
-`data/` back" step. The one structural difference: GitHub Pages serves a repo directly with no
-separate resource to create, while Azure's closest equivalent, **Azure Static Web Apps**, is its
-own resource that the pipeline deploys *into* (via the `AzureStaticWebApp@0` task) rather than
-something that just exists the moment the repo does.
+The local Windows Task Scheduler job (`scripts/refresh_local.ps1`) is unreliable as the *only*
+daily scheduler: it only runs if the maintainer's laptop is on and logged in at the trigger time,
+so a day where that's not true (reboot, late unlock, laptop off) means the feed just doesn't
+refresh, with nothing retrying it. `azure-pipelines.yml` (repo root) runs the same job - pull,
+`collect.py`, commit, push - on the same daily cron, except in Microsoft's cloud, so it runs
+whether or not any laptop is on. It also carries an `AzureStaticWebApp@0` deploy step, left in as
+optional - you don't need it to accomplish the above, it's only for also hosting a mirror of the
+site on Azure Static Web Apps.
 
-This is prepared but not yet active - it needs the repo to actually be hosted in Azure DevOps
-first. One-time setup once that's true:
+Two remotes, explicitly synced - **not** one taking over from the other. Azure Repos and GitHub
+have no relationship with each other on their own: a push to one is invisible to the other. GitHub
+Pages (`deploy.yml`) is still what the public site link points at, and it only republishes on a
+push *to GitHub*. So `azure-pipelines.yml`'s "Save new data to the repo" step pushes the daily
+commit to **both** `origin` (Azure Repos) and GitHub explicitly - mirroring what the local
+fallback job already does today via two push URLs on one `origin` (`git remote -v` shows both).
+Skipping the GitHub push (e.g. by reusing the old single-remote step) would leave GitHub Pages
+frozen on whatever the last commit pushed to GitHub was.
 
-1. **Create the Static Web App.** Azure Portal → Create a resource → Static Web App → Free tier.
-   Skip its built-in "connect to a repo" wizard (that path assumes GitHub); create it standalone,
-   then open it → **Manage deployment token** → copy the token.
-2. **Create the pipeline.** Azure DevOps → Pipelines → New pipeline → Azure Repos Git →
+Because of this, **the Azure cron and a local daily cron must never both be live at once** - they
+run data collection at the same moment (`0 5 * * *` UTC = 8am Riyadh, matching the old local
+trigger exactly), and two independent `collect.py` runs starting from the same stale snapshot is
+exactly the race that caused unresolvable `data/*.json` merge conflicts before (see
+`refresh_local.ps1`'s comments). With Azure as the daily scheduler, the local job's own daily
+trigger is disabled - it now runs only `at log on` (2 min delay), purely as a fallback for a day
+the Azure pipeline itself fails for some reason; its own same-day guard makes it a no-op on every
+normal day where Azure already pushed.
+
+One-time setup needed before this does anything - it needs the repo to actually be hosted in
+Azure DevOps first (the `origin` remote's second push URL, `ihorizons.visualstudio.com/.../Zeina-
+NewsAggregator-poc`, already keeps it mirrored from the local machine's pushes):
+
+1. **Create the pipeline.** Azure DevOps → Pipelines → New pipeline → Azure Repos Git →
    `signal-desk` → Existing Azure Pipelines YAML file → `/azure-pipelines.yml`.
+2. **Create a GitHub push token.** GitHub → Settings → Developer settings → Fine-grained tokens →
+   generate one scoped to just this repo, with **Contents: Read and write** permission (a classic
+   PAT with the `repo` scope also works). This is separate from the `GITHUB_TOKEN` variable
+   below - that one only raises the rate limit on GitHub's public Search API for
+   `github_search` sources and has no write access.
 3. **Add Pipeline variables** (Pipeline → Edit → Variables): `GEMINI_API_KEY`, `GROQ_API_KEY`,
-   `GITHUB_TOKEN` as **secret** (same three GitHub Actions secrets today - `GITHUB_TOKEN` here is
-   a GitHub PAT used only to raise the rate limit on GitHub's public Search API for
-   `github_search` sources, so it's still needed even though CI itself no longer runs on GitHub);
-   `GEMINI_MODELS`, `GROQ_MODELS` as plain variables; the Static Web Apps token from step 1 as
-   `AZURE_STATIC_WEB_APPS_API_TOKEN`, **secret**.
-4. **Grant push-back permission.** Project Settings → Repositories → `signal-desk` → Security →
-   find this project's **Build Service** identity → allow **Contribute**. Without this, the "Save
-   new data to the repo" step can authenticate (via `persistCredentials: true` in the checkout
-   step) but still gets rejected pushing.
-5. Run the pipeline once manually to confirm both the data commit and the Static Web Apps deploy
-   succeed, then let the daily schedule take over.
+   `GITHUB_TOKEN`, `GITHUB_PUSH_TOKEN` (the token from step 2) all as **secret**; `GEMINI_MODELS`,
+   `GROQ_MODELS` as plain variables. Only add `AZURE_STATIC_WEB_APPS_API_TOKEN` (secret, from a
+   Static Web App resource's **Manage deployment token**) if you also want the optional Azure
+   Static Web Apps mirror - otherwise delete the `AzureStaticWebApp@0` step from the pipeline.
+4. **Grant push-back permission on Azure Repos.** Project Settings → Repositories → `signal-desk`
+   → Security → find this project's **Build Service** identity → allow **Contribute**. Without
+   this, the "Save new data to the repo" step can authenticate to Azure Repos (via
+   `persistCredentials: true` in the checkout step) but still gets rejected pushing there - this
+   doesn't affect the separate GitHub push, which authenticates with `GITHUB_PUSH_TOKEN` instead.
+5. Run the pipeline once manually to confirm the commit lands on both `git log` in Azure Repos
+   *and* in the GitHub repo (and that GitHub Pages picks it up), then let the daily schedule take
+   over.
+6. **Disable the local job's daily trigger** (Task Scheduler → `SignalDeskLocalRefresh` → remove
+   the daily trigger, keep the logon one) so the two schedulers don't collide - see above.
 
-`.github/workflows/refresh.yml` is left in place rather than deleted - once Azure DevOps is the
-only git remote, nothing pushes to GitHub any more, so it simply stops triggering on its own.
+`.github/workflows/refresh.yml` is left in place but now redundant day-to-day once the Azure
+pipeline is live and pushing to GitHub itself - it still runs on `workflow_dispatch` or a push to
+a non-`data/` file, so it's harmless to keep as a manual/CI fallback.
 
 ## `index.html` — the frontend
 
