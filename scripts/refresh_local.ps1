@@ -1,10 +1,13 @@
-# Daily local equivalent of the GitHub Actions / Azure Pipelines refresh job - runs collect.py,
-# then commits and pushes data/ if anything changed. Runs via the daily 8:00 AM Task Scheduler
-# trigger (plus an at-logon trigger that catches a morning the machine was off/unlocked-late for),
-# or manually (Task Scheduler -> right-click -> Run) - either way, progress streams to both the
-# console and refresh-local.log, so a manual run doesn't look like it's doing nothing while it's
-# actually working (a slow run is usually the Gemini API having a rough day - see the log for the
-# actual reason, not a hang).
+# Fallback equivalent of the Azure Pipelines refresh job (azure-pipelines.yml is now the primary
+# daily scheduler - see ARCHITECTURE.md) - runs collect.py, then commits and pushes data/ if
+# anything changed. Runs via Task Scheduler's at-logon trigger only (no daily trigger - that would
+# race with Azure Pipelines' identical daily cron, which is exactly the two-schedulers-at-once
+# problem that used to cause unresolvable data/*.json merge conflicts). The same-day guard below
+# means this is a no-op on every normal day where Azure already pushed; it only does real work on
+# a day Azure's pipeline itself failed to run. Can also be run manually (Task Scheduler ->
+# right-click -> Run) - either way, progress streams to both the console and refresh-local.log, so
+# a manual run doesn't look like it's doing nothing while it's actually working (a slow run is
+# usually the Gemini API having a rough day - see the log for the actual reason, not a hang).
 #
 # Needs GEMINI_API_KEY / GROQ_API_KEY set as permanent (User or System) environment variables -
 # Task Scheduler doesn't inherit a terminal session's env vars, only ones set that way.
