@@ -2,12 +2,24 @@
 # schedule and on pushes to main (except data-only pushes), then commits data/ back and deploys
 # the repo root as a static site via Azure Static Web Apps.
 #
-# This is the primary daily scheduler (the local Windows Task Scheduler job is a logon-triggered
-# fallback only now - see scripts/refresh_local.ps1), because it runs in Microsoft's cloud
-# regardless of whether anyone's laptop is on or logged in. GitHub Pages stays the live public
-# site though, so the "Save new data to the repo" step below pushes the commit to GitHub as well
-# as Azure Repos - Azure DevOps and GitHub don't know about each other on their own, so this job
-# does it explicitly (see ARCHITECTURE.md).
+# Meant to be the primary daily scheduler (the local Windows Task Scheduler job is a
+# logon-triggered fallback only - see scripts/refresh_local.ps1), because it runs in Microsoft's
+# cloud regardless of whether anyone's laptop is on or logged in. GitHub Pages stays the live
+# public site though, so the "Save new data to the repo" step below pushes the commit to GitHub
+# as well as Azure Repos - Azure DevOps and GitHub don't know about each other on their own, so
+# this job does it explicitly (see ARCHITECTURE.md).
+#
+# NOT CURRENTLY SCHEDULED (see the commented-out `schedules:` block below): its Azure Repos push
+# is 403ing with TF401027 ("GenericContribute") because the Build Service identity hasn't been
+# granted Contribute on this repo yet, and that needs an Azure DevOps admin to fix (Project
+# Settings -> Repositories -> Security). Its GitHub push already works fine on its own. Until the
+# permission's sorted, .github/workflows/refresh.yml has its own `schedule:` trigger back
+# (temporarily) as the primary scheduler, specifically so this pipeline's cron and that workflow's
+# don't fire at the same moment and race each other over data/*.json.
+#
+# To make this primary again once the permission is fixed: uncomment the `schedules:` block below,
+# remove the `schedule:` block from .github/workflows/refresh.yml, and run this pipeline once
+# manually to confirm the Azure Repos push now succeeds.
 #
 # One-time setup needed before this does anything - see ARCHITECTURE.md's
 # "Running the daily refresh from Azure DevOps (GitHub Pages stays the live site)" section for
@@ -19,18 +31,24 @@
 #   3. Grant this project's Build Service identity "Contribute" on this repo (Project Settings ->
 #      Repositories -> Security) so the "Save new data" step below can push to Azure Repos.
 
-schedules:
-  - cron: "0 5 * * *" # 05:00 UTC = 08:00 Riyadh, every day
-    displayName: Daily refresh
-    branches:
-      include: [main]
-    always: true
+# schedules:
+#   - cron: "0 5 * * *" # 05:00 UTC = 08:00 Riyadh, every day
+#     displayName: Daily refresh
+#     branches:
+#       include: [main]
+#     always: true
 
-trigger:
-  branches:
-    include: [main]
-  paths:
-    exclude: [data/*]
+# Also paused for now, same reason as `schedules:` above: this has the same condition as
+# .github/workflows/refresh.yml's own push trigger, so leaving it live would mean every non-data
+# push fires both of them at once, each trying to collect+commit+push around the same moment -
+# the same race the schedule pause above is avoiding, just push-triggered instead of cron-
+# triggered. Restore this alongside `schedules:` once the Azure Repos permission is fixed.
+trigger: none
+# trigger:
+#   branches:
+#     include: [main]
+#   paths:
+#     exclude: [data/*]
 
 pool:
   vmImage: ubuntu-latest

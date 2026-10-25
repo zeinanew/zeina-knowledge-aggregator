@@ -1,11 +1,19 @@
 name: Collect and refresh
 
-# No schedule trigger: the daily collect+commit now runs from a local Windows Task Scheduler job
-# (scripts/refresh_local.ps1) instead, to avoid two independent schedulers racing to regenerate
-# and push data/*.json at the same time (which produces unresolvable merge conflicts, since two
-# independently-regenerated JSON snapshots rarely line-merge cleanly). This workflow still runs
-# on demand and whenever sources.json (or any non-data file) changes.
+# GitHub Actions is the primary daily scheduler again, TEMPORARILY, until the Azure Pipeline
+# (azure-pipelines.yml) can actually push to Azure Repos - it's fully set up and its GitHub push
+# already works, but its Azure Repos push is still 403ing on a repo permission (TF401027,
+# "GenericContribute") that needs an Azure DevOps admin to grant, which isn't available right now.
+# Azure Pipelines' own `schedules:` cron has been paused in the Azure DevOps UI (not removed from
+# the YAML) for the duration, specifically so it and this one don't both try to collect+commit at
+# the same moment - that race is exactly what produces unresolvable data/*.json merge conflicts.
+#
+# Once the Azure Repos permission is fixed: remove this `schedule:` block again, un-pause the
+# Azure Pipeline, and Azure goes back to being primary (see ARCHITECTURE.md). Until then this also
+# still runs on demand and whenever sources.json (or any non-data file) changes, same as before.
 on:
+  schedule:
+    - cron: "0 5 * * *" # 05:00 UTC = 08:00 Riyadh, every day
   workflow_dispatch:       # "Run workflow" button on the Actions tab
   push:
     branches: [main]
