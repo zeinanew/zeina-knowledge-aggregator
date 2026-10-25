@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T06:58:56Z",
+ "updated": "2026-10-25T07:11:40Z",
  "items": [
   {
    "id": "86405d6d1e9fb855",
@@ -155,7 +155,7 @@
    "desc": "Hacker News discussion with 306 points and 307 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50226419",
    "hnId": "50226419",
-   "points": 306,
+   "points": 307,
    "comments": 307,
    "image": "https://substackcdn.com/image/fetch/$s_!oz9x!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F999e3450-1df3-457d-8715-5e2e46d5121c_2886x1843.png",
    "engagementBonus": 1,
@@ -163,6 +163,35 @@
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 4
+  },
+  {
+   "id": "0509c80e85fbace7",
+   "title": "Blue Planet III keeps rough edges in the age of AI",
+   "url": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
+   "source": "verge-ai",
+   "sourceName": "The Verge AI",
+   "type": "news",
+   "date": "2026-10-24T21:29:12Z",
+   "addedAt": "2026-10-25T07:11:40Z",
+   "summary": "Blue Planet III will include imperfect shots to prove authenticity and counter AI’s polished look.",
+   "why": "It demonstrates how media producers use authenticity cues to counter AI-generated content.",
+   "topic": "industry",
+   "tags": [
+    "ai",
+    "media",
+    "authenticity"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "blue-planet-iii-authenticity",
+   "rawStoryKey": "blue-planet-iii-authenticity",
+   "desc": "BBC's Blue Planet III is looking to prove its authenticity by leaving in the less-than-perfect shots. Previous incarnations of the nature series were defined by their gorgeous, crystal-clear footage that seemed almost too good to be real. But one dead giveaway of AI is when things look too polished and seamless. To counter that, Blue […]",
+   "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/blue_planet_iii_episode_03_051_screengrab.avif?quality=90&strip=all&crop=0%2C3.4695867913185%2C100%2C93.060826417363&w=1200",
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "074b7d5e1602db74",
@@ -190,7 +219,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50224463",
    "hnId": "50224463",
    "points": 537,
-   "comments": 547,
+   "comments": 550,
    "image": "https://www.apollo.com/content/dam/apolloaem/apollo-default-page-share-image/apollo-og-image.png",
    "engagementBonus": 2,
    "clusterSize": 1,
@@ -313,7 +342,7 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-11-release-speech-decision-models",
    "desc": "Speech Ollama can now generate speech on macOS. ollama run plays text or a chat model's reply aloud as the audio is generated, and apps can stream audio through the OpenAI-compatible /v1/audio/speech endpoint. ollama run phonon \" Hello from Ollama. \" d3 decision models d3 brings vLLM Semantic Router's decision models to Ollama. Give a model text, structured state, or an image, and ask it to classify, answer yes or no, or score options with probabilities. The family includes 2B, 4B, 9B, and 27B sizes. ollama run d3 \" A customer says their card was charged twice. \" --ask \" Is this a billing issue? \" New Contributors @SynapShift made their first contribution in #19173 Full Changelog : v0.40.10...v0.40.11-rc0",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": true,
    "clusterSources": [
     "TechCrunch AI"
@@ -344,7 +373,7 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-9-release",
    "desc": "Flint on Linux and Windows Flint now runs on Linux and Windows as well as macOS. Other improvements Streaming OpenAI Responses and Anthropic Messages requests now report generation failures instead of ending silently after partial output. ollama launch now passes cloud models' context lengths and capabilities to coding tools, fixing incorrect context and compaction settings. Anthropic-compatible web search now uses the model's supported thinking setting in follow-up requests, preventing avoidable failures. Full Changelog : v0.40.8...v0.40.9",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
    "buzzScore": 4
@@ -572,6 +601,74 @@
    "buzzScore": 2
   },
   {
+   "id": "a113505a95399695",
+   "title": "Apple Security Research Device",
+   "url": "https://security.apple.com/research-device/",
+   "source": "hackernews-dev",
+   "sourceName": "Hacker News: General Dev",
+   "type": "community",
+   "date": "2026-10-24T02:36:38Z",
+   "addedAt": "2026-10-25T07:11:40Z",
+   "summary": "Apple released a dedicated hardware device for security researchers to test and analyze Apple products.",
+   "why": "It provides a controlled environment for researchers to discover and report vulnerabilities in Apple hardware and software.",
+   "topic": "general",
+   "tags": [
+    "security",
+    "research",
+    "hardware"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "apple-security-research-device",
+   "rawStoryKey": "apple-security-research-device",
+   "desc": "Hacker News discussion with 175 points and 123 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50217903",
+   "hnId": "50217903",
+   "points": 175,
+   "comments": 123,
+   "image": "https://security.apple.com/assets/image/seo-image.jpg",
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 3
+  },
+  {
+   "id": "f80c4bbdb8d6f147",
+   "title": "Twelve Years of Distributed SQLite",
+   "url": "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
+   "source": "hackernews-dev",
+   "sourceName": "Hacker News: General Dev",
+   "type": "community",
+   "date": "2026-10-24T01:16:58Z",
+   "addedAt": "2026-10-25T07:11:40Z",
+   "summary": "Distributed SQLite has been in development for twelve years and is now ready for production use.",
+   "why": "It expands SQLite’s use to distributed systems, enabling developers to build distributed applications with a lightweight, embedded database.",
+   "topic": "general",
+   "tags": [
+    "sqlite",
+    "distributed",
+    "open-source",
+    "database"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "distributed-sqlite-12-year-release",
+   "rawStoryKey": "distributed-sqlite-12-year-release",
+   "desc": "Hacker News discussion with 370 points and 63 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50217500",
+   "hnId": "50217500",
+   "points": 370,
+   "comments": 63,
+   "engagementBonus": 1,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 4
+  },
+  {
    "id": "f699a3e5cdaf4929",
    "title": "OpenAI will no longer train its AI models on the live internet, citing significant risks",
    "url": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
@@ -720,6 +817,40 @@
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
+  },
+  {
+   "id": "f91eeafcc1ba2c66",
+   "title": "CVE Tracker",
+   "url": "https://cve.0xosprey.com/",
+   "source": "hackernews-dev",
+   "sourceName": "Hacker News: General Dev",
+   "type": "community",
+   "date": "2026-10-23T21:21:47Z",
+   "addedAt": "2026-10-25T07:11:40Z",
+   "summary": "CVE Tracker is a website that tracks and aggregates CVE vulnerabilities.",
+   "why": "It helps developers and security professionals stay informed about software vulnerabilities.",
+   "topic": "general",
+   "tags": [
+    "security",
+    "cve",
+    "tracker"
+   ],
+   "importance": 3,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "cve-tracker",
+   "rawStoryKey": "cve-tracker",
+   "desc": "Hacker News discussion with 217 points and 72 comments.",
+   "discussion": "https://news.ycombinator.com/item?id=50215530",
+   "hnId": "50215530",
+   "points": 217,
+   "comments": 72,
+   "image": "https://cve.0xosprey.com/og.png",
+   "engagementBonus": 1,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 4
   },
   {
    "id": "f9113fa394af665d",
@@ -1376,7 +1507,7 @@
    "rawStoryKey": "huggingface-aws-trainium-support",
    "desc": "",
    "image": "https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
@@ -1837,6 +1968,37 @@
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
+  },
+  {
+   "id": "12391e3e6fb1aeae",
+   "title": "Agentic coding, in your control",
+   "url": "https://github.com/konic-labs/kubic",
+   "source": "github-new-llm",
+   "sourceName": "GitHub: new LLM repos",
+   "type": "github",
+   "date": "2026-10-22T16:45:36Z",
+   "addedAt": "2026-10-25T07:11:40Z",
+   "summary": "konic-labs/kubic is a TypeScript library for agentic coding.",
+   "why": "It gives developers a framework to build AI-driven coding assistants in TypeScript.",
+   "topic": "agents",
+   "tags": [
+    "agentic",
+    "typescript",
+    "open-source"
+   ],
+   "importance": 2,
+   "ai": true,
+   "provider": "groq",
+   "storyKey": "kubic-agentic-coding-library",
+   "rawStoryKey": "kubic-agentic-coding-library",
+   "desc": "Agentic coding, in your control (Language: TypeScript; 31 stars)",
+   "repoFullName": "konic-labs/kubic",
+   "stars": 31,
+   "engagementBonus": 0,
+   "clusterSize": 1,
+   "isPrimary": true,
+   "clusterSources": [],
+   "buzzScore": 2
   },
   {
    "id": "d5083253508c23ff",
@@ -2486,7 +2648,7 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-9-release",
    "desc": "What's Changed llama.cpp update Full Changelog : v0.40.8...v0.40.9-rc0",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
    "buzzScore": 4
@@ -2702,7 +2864,7 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "recursive-flint-ollama-release",
    "desc": "Recursive Flint Flint brings Recursive's coding model to Ollama. It is designed for the work coding agents do across a repository: understanding unfamiliar code, tracing bugs, implementing features, and adding tests. Reasoning, multi-turn tool use, and a 262K-token context window support longer tasks across files and tool interactions. Flint is an Apache 2.0-licensed, 40B-parameter mixture-of-experts model with approximately 2.5B parameters active per token. In its release evaluations , Recursive reports 54.9% on Terminal-Bench 2.1 and 74.2% on SWE-bench Verified. ollama run flint Note: Flint is supported on MacOS. Other GPU support will be enabled in a subsequent release. Full Changelog : v0.40.7...v0.40.8",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
    "buzzScore": 4
@@ -2914,7 +3076,7 @@
    "rawStoryKey": "recursive-flint-launch",
    "desc": "Startup Recursive has released Flint, a free, laptop-sized coding model built largely by its own AI research system, as an early test of AI that improves itself.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/05/GettyImages-2157738833.jpg?resize=1200,800",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
    "buzzScore": 4
@@ -4445,7 +4607,7 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-7-release",
    "desc": "What's Changed pplx-decider is a 27B decision model from Perplexity, fine-tuned from Qwen3.8-27B Continuing an OpenAI-compatible Responses conversation no longer fails when switching between models with and without thinking, or when the history contains another provider's compaction items Fixed streaming Responses requests where client tool calls (e.g. Codex with web search) could emit before open reasoning items, producing misordered/duplicate tool call events Requests routed to remote models are now cancelled on ollama.com when the client disconnects, instead of continuing to run ollama show now reports which renderer and parser a model uses and where its chat template comes from; the API exposes the same values in new renderer , parser , and template_source fields More draft models now work with speculative decoding: llama-server infers the draft type automatically instead of requiring Ollama to identify it ollama launch claude now clamps CLAUDE_CODE_AUTO_COMPACT_WINDOW to Claude Code's supported range, avoiding a \"window too large\" warning Updated llama.cpp and MLX Full Changelog : v0.40.6...v0.40.7",
-   "clusterSize": 7,
+   "clusterSize": 6,
    "isPrimary": false,
    "clusterSources": [],
    "buzzScore": 4
@@ -4594,12 +4756,10 @@
    "rawStoryKey": "anthropic-ai-safety-bill-50-people-killed",
    "desc": "The proposed policy seems to offer protections against AI running amok but actually forbids federal agencies from blocking a model's release without the permission of a judge.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-2282033342.jpg?w=1024",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "Hacker News"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "342f3b31d43012d5",
@@ -4650,14 +4810,14 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "gemini-personal-intelligence-cars",
+   "storyKey": "google-gemini-personal-intelligence-cars",
    "rawStoryKey": "google-gemini-personal-intelligence-cars",
    "desc": "Google is bringing Personal Intelligence to Gemini AI in your car. With this update, Gemini in Android Auto and cars with Google built-in can tap into your information across Google apps, including Gmail, Calendar, Maps, Photos, YouTube, and Search. As an example, Google says you can ask Gemini about your flight status if you're driving […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/google-gemini-personal-intelligence.png?quality=90&strip=all&crop=1.0809792843691%2C0%2C97.838041431262%2C100&w=1200",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "dd8747983c69e4ec",
@@ -4710,13 +4870,13 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "ollama-v0-40-11-release-speech-decision-models",
+   "storyKey": "ollama-v0-40-7-rc1-deduplicate-cuda-payloads",
    "rawStoryKey": "ollama-v0-40-7-rc1-deduplicate-cuda-payloads",
    "desc": "Deduplicate MLX CUDA runtime payloads Move CUDA libraries shared by the GGML and MLX backends into the sibling CUDA payload, and teach in-process and subprocess MLX loading to resolve that packaged dependency directory. Keep MLX-private libraries and JIT headers in the MLX overlay, include the full OpenBLAS Fortran runtime closure, and verify those dependencies in release packaging. address comments",
-   "clusterSize": 7,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "4e839948c5b0c27b",
@@ -4865,12 +5025,10 @@
    "rawStoryKey": "gemini-personal-intelligence-cars",
    "desc": "It's probably time to audit your Gemini settings.",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/10/google-gemini-android-auto-500x500.png",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "The Verge AI"
-   ],
-   "buzzScore": 5
+   "clusterSources": [],
+   "buzzScore": 4
   },
   {
    "id": "4dc8a56e037376de",
@@ -4925,7 +5083,7 @@
    "rawStoryKey": "google-pytorch-gpu-tool",
    "desc": "Google has joined Amazon in releasing a developer tool that makes it easy for PyTorch users to move their apps off Nvidia GPUs.",
    "image": "https://techcrunch.com/wp-content/uploads/2025/05/GettyImages-2215577882.jpg?resize=1200,800",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
@@ -6707,12 +6865,12 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "google-pytorch-gpu-tool",
+   "storyKey": "amazon-torchneuron-dev-tool",
    "rawStoryKey": "amazon-torchneuron-dev-tool",
    "desc": "Amazon wants to break Nvidia’s hold on PyTorch, the free toolkit used to build most AI apps, so that more developers run their apps on alternative chips like its own.",
    "image": "https://techcrunch.com/wp-content/uploads/2025/03/GettyImages-2205217071.jpg?resize=1200,800",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
   },
@@ -8164,12 +8322,12 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "huggingface-aws-trainium-support",
+   "storyKey": "torchneuron-aws-trainium-support",
    "rawStoryKey": "torchneuron-aws-trainium-support",
    "desc": "",
    "image": "https://huggingface.co/blog/assets/hf-torchneuron/thumbnail.png",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
   },
@@ -8436,7 +8594,7 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "anthropic-ai-safety-bill-50-people-killed",
+   "storyKey": "anthropic-ai-safety-bill-50-deaths-1b-damages",
    "rawStoryKey": "anthropic-ai-safety-bill-50-deaths-1b-damages",
    "desc": "Hacker News discussion with 165 points and 165 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50141429",
@@ -8445,10 +8603,10 @@
    "comments": 167,
    "image": "https://cdn.mos.cms.futurecdn.net/SVPa8KkaDwkeyAtLnMhyKW-1920-80.png",
    "engagementBonus": 0,
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "f1073754b8e021e3",
