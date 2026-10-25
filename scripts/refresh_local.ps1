@@ -1,9 +1,10 @@
 # Daily local equivalent of the GitHub Actions / Azure Pipelines refresh job - runs collect.py,
 # then commits and pushes data/ if anything changed. Runs via the daily 8:00 AM Task Scheduler
-# trigger, or manually (Task Scheduler -> right-click -> Run) - either way, progress streams to
-# both the console and refresh-local.log, so a manual run doesn't look like it's doing nothing
-# while it's actually working (a slow run is usually the Gemini API having a rough day - see the
-# log for the actual reason, not a hang).
+# trigger (plus an at-logon trigger that catches a morning the machine was off/unlocked-late for),
+# or manually (Task Scheduler -> right-click -> Run) - either way, progress streams to both the
+# console and refresh-local.log, so a manual run doesn't look like it's doing nothing while it's
+# actually working (a slow run is usually the Gemini API having a rough day - see the log for the
+# actual reason, not a hang).
 #
 # Needs GEMINI_API_KEY / GROQ_API_KEY set as permanent (User or System) environment variables -
 # Task Scheduler doesn't inherit a terminal session's env vars, only ones set that way.
@@ -21,6 +22,16 @@ $log = Join-Path $repo "refresh-local.log"
 # that stale base. Starting from the latest data means collect.py's own id/title dedup already
 # treats whatever the other run added as "not new", so there's nothing left to conflict over.
 git pull --rebase --autostash 2>&1 | Tee-Object -FilePath $log -Append
+
+# The at-logon trigger exists to catch a missed 8am run (machine off, or still locked), not to
+# re-run on every logon/unlock of the day. If today's refresh already landed - from this machine
+# or from the cloud workflows - skip without touching the Gemini/Groq APIs again.
+$today = Get-Date -Format yyyy-MM-dd
+$lastSubject = git log -1 --pretty=%s
+if ($lastSubject -like "Refresh feed $today*") {
+    "Already refreshed today ($lastSubject) - skipping." | Tee-Object -FilePath $log -Append
+    exit 0
+}
 
 python scripts/collect.py 2>&1 | Tee-Object -FilePath $log -Append
 
