@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T05:23:38Z",
+ "updated": "2026-10-26T06:18:37Z",
  "items": [
   {
    "id": "0fe639e321946d77",
@@ -26,8 +26,8 @@
    "desc": "Hacker News discussion with 114 points and 75 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50238088",
    "hnId": "50238088",
-   "points": 114,
-   "comments": 75,
+   "points": 130,
+   "comments": 80,
    "image": "https://image.theregister.com/4091853.jpg?imageId=4091853&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -90,8 +90,8 @@
    "desc": "Hacker News discussion with 227 points and 255 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50236102",
    "hnId": "50236102",
-   "points": 228,
-   "comments": 255,
+   "points": 237,
+   "comments": 261,
    "image": "https://minimaxir.com/2026/10/cheap-llms/vercel.png",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -154,8 +154,8 @@
    "desc": "Hacker News discussion with 500 points and 226 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50233779",
    "hnId": "50233779",
-   "points": 501,
-   "comments": 226,
+   "points": 506,
+   "comments": 228,
    "engagementBonus": 2,
    "clusterSize": 1,
    "isPrimary": true,
@@ -218,7 +218,7 @@
    "desc": "Hacker News discussion with 210 points and 308 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50233304",
    "hnId": "50233304",
-   "points": 210,
+   "points": 211,
    "comments": 308,
    "image": "https://bloximages.chicago2.vip.townnews.com/dailycal.org/content/tncms/assets/v3/editorial/9/44/944d84f9-b521-443c-ae42-3811a39ea788/6adac8999d0f1.image.jpg?crop=1793%2C941%2C0%2C106&resize=1200%2C630&order=crop%2Cresize",
    "engagementBonus": 1,
@@ -368,7 +368,7 @@
    "desc": "Hacker News discussion with 287 points and 1 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50230181",
    "hnId": "50230181",
-   "points": 287,
+   "points": 288,
    "comments": 1,
    "image": "https://pbs.twimg.com/media/HVb1282bgAAg6jY?format=webp&name=large",
    "engagementBonus": 1,
@@ -466,7 +466,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50229599",
    "hnId": "50229599",
    "points": 122,
-   "comments": 106,
+   "comments": 107,
    "image": "https://xtramagazine.com/wp-content/uploads/2026/09/Xtra_Comics_Raccoons_CGallardo_Web.jpg",
    "engagementBonus": 0,
    "clusterSize": 1,
@@ -499,7 +499,7 @@
    "rawStoryKey": "dsh-purge-flash-plugin",
    "desc": "DSH 破甲插件：token 级重试环 + 十片按需叶子（含邻近交付）+ 分级 prefill + 拒答阶梯 L0–L3 + finish_reason 四路分流 + 请求体级整形。零宿主补丁，188 项测试 / 56 条探针。 (Language: JavaScript; 75 stars)",
    "repoFullName": "jadezane6634-ops/dsh-purge-flash",
-   "stars": 75,
+   "stars": 84,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -756,7 +756,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50224463",
    "hnId": "50224463",
    "points": 616,
-   "comments": 652,
+   "comments": 654,
    "image": "https://www.apollo.com/content/dam/apolloaem/apollo-default-page-share-image/apollo-og-image.png",
    "engagementBonus": 2,
    "clusterSize": 2,
@@ -848,7 +848,7 @@
    "discussion": "https://news.ycombinator.com/item?id=50223647",
    "hnId": "50223647",
    "points": 244,
-   "comments": 197,
+   "comments": 198,
    "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -879,12 +879,10 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-11-release-speech-decision-models",
    "desc": "Speech Ollama can now generate speech on macOS. ollama run plays text or a chat model's reply aloud as the audio is generated, and apps can stream audio through the OpenAI-compatible /v1/audio/speech endpoint. ollama run phonon \" Hello from Ollama. \" d3 decision models d3 brings vLLM Semantic Router's decision models to Ollama. Give a model text, structured state, or an image, and ask it to classify, answer yes or no, or score options with probabilities. The family includes 2B, 4B, 9B, and 27B sizes. ollama run d3 \" A customer says their card was charged twice. \" --ask \" Is this a billing issue? \" New Contributors @SynapShift made their first contribution in #19173 Full Changelog : v0.40.10...v0.40.11-rc0",
-   "clusterSize": 6,
+   "clusterSize": 5,
    "isPrimary": true,
-   "clusterSources": [
-    "TechCrunch AI"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "3ed73eed21775aa1",
@@ -910,10 +908,10 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-9-release",
    "desc": "Flint on Linux and Windows Flint now runs on Linux and Windows as well as macOS. Other improvements Streaming OpenAI Responses and Anthropic Messages requests now report generation failures instead of ending silently after partial output. ollama launch now passes cloud models' context lengths and capabilities to coding tools, fixing incorrect context and compaction settings. Anthropic-compatible web search now uses the model's supported thinking setting in follow-up requests, preventing avoidable failures. Full Changelog : v0.40.8...v0.40.9",
-   "clusterSize": 6,
+   "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "f686687fa50fc360",
@@ -1005,7 +1003,7 @@
    "desc": "Hacker News discussion with 102 points and 37 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50222525",
    "hnId": "50222525",
-   "points": 137,
+   "points": 138,
    "comments": 51,
    "image": "https://actu.epfl.ch/image/168660/640x360.jpg",
    "engagementBonus": 0,
@@ -1135,7 +1133,7 @@
    "rawStoryKey": "tokenbar-ai-quota-monitor",
    "desc": "Open-source, cross-platform AI quota monitor (Codex, Claude, Cursor and 47 more). Windows, macOS, Linux, Android and iOS. Built with Flutter. (Language: Dart; 30 stars)",
    "repoFullName": "lwh0630/TokenBar",
-   "stars": 58,
+   "stars": 60,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -1231,7 +1229,7 @@
    "desc": "Hacker News discussion with 370 points and 63 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50217500",
    "hnId": "50217500",
-   "points": 384,
+   "points": 385,
    "comments": 66,
    "engagementBonus": 1,
    "clusterSize": 1,
@@ -2151,7 +2149,7 @@
    "rawStoryKey": "nervecenter-api-account-management",
    "desc": "new-api / sub2api 中转站账号管理中心：余额、API Key、用量、倍率、模型比价 | https://nvcenter.cc (Language: TypeScript; 35 stars)",
    "repoFullName": "NerverDevs/nervecenter",
-   "stars": 47,
+   "stars": 50,
    "engagementBonus": 0,
    "clusterSize": 1,
    "isPrimary": true,
@@ -3499,7 +3497,7 @@
    "rawStoryKey": "nvidia-open-models-financial-services",
    "desc": "At GTC Berlin, banks, payment companies and financial data providers are showing what production-scale intelligence looks like — built on NVIDIA accelerated computing, powered by open weight models and running on their own infrastructure. Revolut is rebuilding its technology stack on a single foundation model PRAGMA, powered by NVIDIA accelerated computing. Using the NVIDIA cuDF […]",
    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/10/Financial-Services-NVIDIA-Open-Models-842x450.jpg",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
@@ -3643,12 +3641,12 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "nvidia-open-models-financial-services",
+   "storyKey": "nvidia-open-models-european-public-sector",
    "rawStoryKey": "nvidia-open-models-european-public-sector",
    "desc": "Governments need modern solutions to serve the public while keeping sensitive information under their control. Open models provide a path forward, letting governments evaluate them, adapt them to local languages and public services, run them on infrastructure they control, apply their own safeguards and keep sensitive data within controlled environments. Some open models go further, […]",
    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/10/open-model-european-public-sector-842x450.jpg",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
    "buzzScore": 3
   },
@@ -3710,10 +3708,10 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-9-release",
    "desc": "What's Changed llama.cpp update Full Changelog : v0.40.8...v0.40.9-rc0",
-   "clusterSize": 6,
+   "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "ba6fa07d677a8221",
@@ -3926,10 +3924,10 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "recursive-flint-ollama-release",
    "desc": "Recursive Flint Flint brings Recursive's coding model to Ollama. It is designed for the work coding agents do across a repository: understanding unfamiliar code, tracing bugs, implementing features, and adding tests. Reasoning, multi-turn tool use, and a 262K-token context window support longer tasks across files and tool interactions. Flint is an Apache 2.0-licensed, 40B-parameter mixture-of-experts model with approximately 2.5B parameters active per token. In its release evaluations , Recursive reports 54.9% on Terminal-Bench 2.1 and 74.2% on SWE-bench Verified. ollama run flint Note: Flint is supported on MacOS. Other GPU support will be enabled in a subsequent release. Full Changelog : v0.40.7...v0.40.8",
-   "clusterSize": 6,
+   "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "86bbef590f282368",
@@ -4134,14 +4132,14 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "ollama-v0-40-11-release-speech-decision-models",
+   "storyKey": "recursive-flint-launch",
    "rawStoryKey": "recursive-flint-launch",
    "desc": "Startup Recursive has released Flint, a free, laptop-sized coding model built largely by its own AI research system, as an early test of AI that improves itself.",
    "image": "https://techcrunch.com/wp-content/uploads/2026/05/GettyImages-2157738833.jpg?resize=1200,800",
-   "clusterSize": 6,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "0d8d033795840d49",
@@ -4167,12 +4165,10 @@
    "rawStoryKey": "anthropic-claude-duet-release",
    "desc": "Anthropic just announced an AI agent competitor to Meta's Muse and OpenAI's Dots: Claude Duet. The new agent, designed for professionals and small business owners, is launching as a \"research preview,\" according to Anthropic, and it's available as a standalone app on iOS and Android and through Claude on the web. The AI agent is […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/STKB364_CLAUDE_D.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "Hacker News"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "939258c0eb55b7a6",
@@ -4228,12 +4224,10 @@
    "rawStoryKey": "walmart-ai-agent-purchase-technology",
    "desc": "As Amazon blocks AI agents from shopping on its site, Walmart is taking the opposite approach, introducing new technology that lets AI agents make purchases on customers' behalf, with controls over spending and transaction approvals.",
    "image": "https://techcrunch.com/wp-content/uploads/2018/01/gettyimages-903923942.jpeg?resize=1200,800",
-   "clusterSize": 2,
+   "clusterSize": 1,
    "isPrimary": true,
-   "clusterSources": [
-    "The Verge AI"
-   ],
-   "buzzScore": 4
+   "clusterSources": [],
+   "buzzScore": 3
   },
   {
    "id": "89a2c6e8757c1903",
@@ -4255,14 +4249,14 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "walmart-ai-agent-purchase-technology",
+   "storyKey": "walmart-ai-shopping-agents",
    "rawStoryKey": "walmart-ai-shopping-agents",
    "desc": "Walmart will soon let AI agents shop on its website for you. Next month, the retail giant will allow you to use an AI agent on the site, with systems in place to let you approve and review purchases and set spending limits. The embrace of AI agents stands in stark contrast to Amazon, which […]",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/gettyimages-2247092603.jpg?quality=90&strip=all&crop=0%2C10.723165084465%2C100%2C78.55366983107&w=1200",
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "eb0f1c4495dc1cfc",
@@ -4319,7 +4313,7 @@
    "importance": 3,
    "ai": true,
    "provider": "groq",
-   "storyKey": "anthropic-claude-duet-release",
+   "storyKey": "anthropic-claude-duet",
    "rawStoryKey": "anthropic-claude-duet",
    "desc": "Hacker News discussion with 341 points and 306 comments.",
    "discussion": "https://news.ycombinator.com/item?id=50186037",
@@ -4328,10 +4322,10 @@
    "comments": 321,
    "image": "https://claude.com/static/claude-duet/og.jpg",
    "engagementBonus": 1,
-   "clusterSize": 2,
-   "isPrimary": false,
+   "clusterSize": 1,
+   "isPrimary": true,
    "clusterSources": [],
-   "buzzScore": 5
+   "buzzScore": 4
   },
   {
    "id": "ca78317f24e4363b",
@@ -5669,10 +5663,10 @@
    "storyKey": "ollama-v0-40-11-release-speech-decision-models",
    "rawStoryKey": "ollama-v0-40-7-release",
    "desc": "What's Changed pplx-decider is a 27B decision model from Perplexity, fine-tuned from Qwen3.8-27B Continuing an OpenAI-compatible Responses conversation no longer fails when switching between models with and without thinking, or when the history contains another provider's compaction items Fixed streaming Responses requests where client tool calls (e.g. Codex with web search) could emit before open reasoning items, producing misordered/duplicate tool call events Requests routed to remote models are now cancelled on ollama.com when the client disconnects, instead of continuing to run ollama show now reports which renderer and parser a model uses and where its chat template comes from; the API exposes the same values in new renderer , parser , and template_source fields More draft models now work with speculative decoding: llama-server infers the draft type automatically instead of requiring Ollama to identify it ollama launch claude now clamps CLAUDE_CODE_AUTO_COMPACT_WINDOW to Claude Code's supported range, avoiding a \"window too large\" warning Updated llama.cpp and MLX Full Changelog : v0.40.6...v0.40.7",
-   "clusterSize": 6,
+   "clusterSize": 5,
    "isPrimary": false,
    "clusterSources": [],
-   "buzzScore": 4
+   "buzzScore": 3
   },
   {
    "id": "341f11e78b1225e8",
