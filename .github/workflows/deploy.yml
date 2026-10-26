@@ -5,9 +5,21 @@ name: Deploy to Pages
 # local Task Scheduler job (refresh.yml's own push intentionally ignores data/** so its own
 # commit doesn't re-trigger itself; this workflow deliberately has no such exclusion, since
 # "publish the current repo contents" is exactly what a data-only push should trigger).
+#
+# The `workflow_run` trigger exists because `push:` alone silently misses refresh.yml's own
+# commits: that workflow's checkout authenticates with the default, auto-generated GITHUB_TOKEN,
+# and GitHub deliberately blocks pushes made with that token from triggering *other* workflows
+# (an anti-recursion safeguard) - so every unattended scheduled refresh landed a new commit with
+# nothing ever republishing it, and the live site silently went stale after each one. A push made
+# with a real PAT (the local Task Scheduler job's own credentials, or the Azure Pipeline's
+# GITHUB_PUSH_TOKEN) isn't subject to this and triggers `push:` normally - `workflow_run` only
+# needs to cover the gap refresh.yml's bot-token push leaves.
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["Collect and refresh"] # refresh.yml's `name:`
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -20,6 +32,10 @@ concurrency:
 
 jobs:
   deploy:
+    # Only deploy for a workflow_run event if the run that completed actually succeeded - a failed
+    # or cancelled refresh.yml run shouldn't republish (there's nothing new, or data/ may be
+    # incomplete). push/workflow_dispatch events have no workflow_run context, so always proceed.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

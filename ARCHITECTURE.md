@@ -12,8 +12,8 @@ There is no backend, database, or build step.
 |---|---|
 | Collector | Python 3.12, `feedparser`, `requests` |
 | Summarization | Groq's OpenAI-compatible chat API, with Google Gemini (`google-genai`) as a fallback |
-| Scheduling | Azure Pipelines (`azure-pipelines.yml`), daily cron - primary. Windows Task Scheduler (`scripts/refresh_local.ps1`) is a logon-triggered fallback only. GitHub Actions no longer runs its own cron (see below) |
-| CI | GitHub Actions: `refresh.yml` (manual/`sources.json`-edit-triggered collect) + `deploy.yml` (publish on every push) |
+| Scheduling | **Currently**: GitHub Actions' own daily cron (`refresh.yml`), temporarily primary again - Azure Pipelines (`azure-pipelines.yml`) is fully set up but paused (its Azure Repos push is 403ing on a permission an Azure DevOps admin needs to grant; see that file's own top comment). Windows Task Scheduler (`scripts/refresh_local.ps1`) is a logon-triggered fallback either way |
+| CI | GitHub Actions: `refresh.yml` (daily cron / manual / `sources.json`-edit-triggered collect) + `deploy.yml` (publish on every push **and** whenever `refresh.yml` completes - see `deploy.yml`'s comment for why both are needed) |
 | Hosting | GitHub Pages (static files served as-is) |
 | Frontend | Single HTML file: vanilla JS, no framework, no bundler; `fetch` + `localStorage` |
 | Data store | Two JSON files committed to the repo (`data/items.json`, `data/sources.json`) — the "database" is git itself |
@@ -32,10 +32,10 @@ data/sources.json               generated: per-source health/status for the Sour
 data/embeddings_cache.json      generated: collect.py's own cross-run cache, not used by the frontend
 index.html                      the entire frontend (HTML + CSS + JS in one file)
 scripts/refresh_local.ps1       Task Scheduler's logon-triggered fallback - collector + commit + push
-.github/workflows/refresh.yml   manual/sources.json-edit-triggered collector run, commits data/
-.github/workflows/deploy.yml    publishes the repo to GitHub Pages on every push
-azure-pipelines.yml             the primary daily scheduler (Azure Pipelines) - pushes to both
-                                 Azure Repos and GitHub, see below
+.github/workflows/refresh.yml   daily cron / manual / sources.json-edit-triggered collector run
+.github/workflows/deploy.yml    publishes to GitHub Pages on every push, and after refresh.yml runs
+azure-pipelines.yml             the intended primary daily scheduler (Azure Pipelines), currently
+                                 paused - pushes to both Azure Repos and GitHub, see below
 requirements.txt                Python dependencies for the collector
 ```
 
