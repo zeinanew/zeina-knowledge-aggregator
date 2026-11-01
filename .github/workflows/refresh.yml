@@ -13,7 +13,14 @@ name: Collect and refresh
 # still runs on demand and whenever sources.json (or any non-data file) changes, same as before.
 on:
   schedule:
-    - cron: "0 5 * * *" # 05:00 UTC = 08:00 Riyadh, every day
+    # Three attempts instead of one: GitHub's scheduled triggers are best-effort and can be
+    # delayed by hours (or dropped) under load on the free tier - seen in practice Oct 29-31,
+    # where the 05:00 slot didn't fire until 10:41-11:16 UTC. Each extra attempt is nearly free:
+    # collect.py no-ops to "0 new" and the commit step is diff-gated, so this just raises the odds
+    # one of them lands close to on time without risking duplicate commits or wasted API quota.
+    - cron: "0 5 * * *"  # 05:00 UTC = 08:00 Riyadh
+    - cron: "0 8 * * *"  # 08:00 UTC = 11:00 Riyadh (catch-up)
+    - cron: "0 11 * * *" # 11:00 UTC = 14:00 Riyadh (catch-up)
   workflow_dispatch:       # "Run workflow" button on the Actions tab
   push:
     branches: [main]
